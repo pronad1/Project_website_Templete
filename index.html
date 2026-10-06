@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="DSANet: A Grid-Search Optimized Heterogeneous Ensemble for Ischemic Stroke Lesion Segmentation.">
+    <meta name="keywords"
+        content="DSANet, stroke lesion segmentation, DERNet, SegResNet, Attention U-Net, ensemble learning, ISLES 2022">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DSANet | Grid-Search Optimized Heterogeneous Ensemble</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/dsanet.png">
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header class="site-header" id="top">
+        <nav class="navbar publication-navbar" role="navigation" aria-label="main navigation">
+            <div class="container is-max-desktop">
+                <div class="navbar-brand">
+                    <a class="navbar-item brand-item" href="#top" aria-label="Go to top">
+                        <img src="./static/images/dsanet.png" alt="DSANet logo">
+                        <span>DSANet</span>
+                    </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                        data-target="mainNavbar">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="mainNavbar" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="#lab">Lab</a>
+                        <a class="navbar-item" href="#abstract">Abstract</a>
+                        <a class="navbar-item" href="#method">Method</a>
+                        <a class="navbar-item" href="#training">Training</a>
+                        <a class="navbar-item" href="#results">Results</a>
+                        <a class="navbar-item" href="#analysis">Error Analysis</a>
+                        <a class="navbar-item" href="#contributions">Contributions</a>
+                        <a class="navbar-item" href="#citation">Citation</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero publication-hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-vcentered">
+                        <div class="column is-7-desktop">
+                            <h1 class="title is-1 publication-title">
+                                DSANet: A Grid-Search Optimized
+                                Heterogeneous Ensemble for Ischemic Stroke
+                                Lesion Segmentation
+                            </h1>
+                            <p class="subtitle publication-subtitle">
+                                A practical multi-model pipeline that balances segmentation quality, interpretability,
+                                and computational
+                                feasibility for constrained clinical environments.
+                            </p>
+
+                            <div class="tags publication-tags">
+                                <span class="tag is-medium">ISLES 2022</span>
+                                <span class="tag is-medium">FLAIR + DWI + ADC</span>
+                                <span class="tag is-medium">Grid-Search Optimized Fusion</span>
+                            </div>
+
+                            <div class="publication-links">
+                                <a href="#citation" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="fas fa-file-alt"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                                <a href="https://github.com/CIMILab/deploy_DSANet_ISLES22" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
+                                </a>
+                                <a href="https://zenodo.org/records/7153326" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="far fa-images"></i></span>
+                                    <span>Dataset</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="column is-5-desktop">
+                            <article class="hero-input-card reveal-on-scroll">
+                                <h3 class="title is-6 hero-input-title">Input Preview</h3>
+                                <div class="hero-input-grid">
+                                    <img src="./static/images/normal1.jpeg" alt="Input MRI sample 1"
+                                        class="zoomable-image hero-input-image">
+                                    <img src="./static/images/normal2.jpeg" alt="Input MRI sample 2"
+                                        class="zoomable-image hero-input-image">
+                                    <img src="./static/images/abnormal_dwi_3.jpg" alt="Input MRI sample 3"
+                                        class="zoomable-image hero-input-image">
+                                    <img src="./static/images/abnormal_dwi_8.jpg" alt="Input MRI sample 4"
+                                        class="zoomable-image hero-input-image">
+                                </div>
+                                <p class="hero-input-caption">
+                                    Representative standardized inputs used before ensemble inference.
+                                </p>
+                            </article>
+                        </div>
+
+                    </div>
+
+                    <div class="columns is-multiline metrics-row">
+                        <div class="column is-3-desktop is-6-tablet">
+                            <article class="metric-card reveal-on-scroll">
+                                <p class="metric-label">Macro Dice</p>
+                                <p class="metric-value" data-countup="0.8780">0.0000</p>
+                            </article>
+                        </div>
+                        <div class="column is-3-desktop is-6-tablet">
+                            <article class="metric-card reveal-on-scroll">
+                                <p class="metric-label">Micro F1</p>
+                                <p class="metric-value" data-countup="0.8780">0.0000</p>
+                            </article>
+                        </div>
+                        <div class="column is-3-desktop is-6-tablet">
+                            <article class="metric-card reveal-on-scroll">
+                                <p class="metric-label">Macro Recall</p>
+                                <p class="metric-value" data-countup="0.9279">0.0000</p>
+                            </article>
+                        </div>
+                        <div class="column is-3-desktop is-6-tablet">
+                            <article class="metric-card reveal-on-scroll">
+                                <p class="metric-label">Optimal Threshold</p>
+                                <p class="metric-value">0.45</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+
+        <section class="section" id="lab">
+            <div class="container is-max-desktop">
+                <article class="lab-credit-card reveal-on-scroll" aria-label="Research lab attribution">
+                    <img src="./static/images/cimilogo.png" alt="CIMILab logo" class="lab-credit-logo">
+                    <div class="lab-credit-content">
+                        <p class="lab-credit-label">Research Lab</p>
+                        <h2 class="lab-credit-title">Computation Informatics and Machine Intelligence Lab (CIMILab)</h2>
+                        <p class="lab-credit-text">
+                            This work was carried out at CIMILab, where DSANet was designed, trained, and evaluated for
+                            ischemic stroke lesion segmentation.
+                        </p>
+                        <div class="lab-credit-links">
+                            <a class="lab-github-link" href="https://github.com/CIMILab" target="_blank"
+                                rel="noopener noreferrer" aria-label="Visit CIMILab GitHub page">
+                                <span class="icon"><i class="fab fa-github"></i></span>
+                                <span>CIMILab GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="input-standard">
+            <div class="container is-max-desktop">
+
+                <article class="box content-block reveal-on-scroll mt-5">
+                    <img src="./static/images/update.png"
+                        alt="High-level DSANet architecture and fusion workflow" class="result-hero zoomable-image">
+                    <p class="is-size-7 mt-3">
+                        <strong></strong> Overview of the proposed DSANet framework. Preprocessed multi-modal
+                        MRI volumes (FLAIR, DWI, ADC) are processed in parallel by three complementary 3D networks
+                        (DERNet, SegResNet, and Attention U-Net). Their soft predictions are fused through weighted
+                        averaging, where the weights and binarization threshold are jointly selected by the constrained
+                        grid search in Algorithm 1, followed by morphological post-processing.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+
+        <section class="section" id="abstract">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 section-title">Abstract</h2>
+                <div class="content paper-content reveal-on-scroll">
+                    <p>
+                        Accurate segmentation of ischemic stroke lesions from multi-modal MRI is a critical prerequisite for timely clinical decision-making. This paper presents DSANet, a heterogeneous ensemble framework that couples three complementary 3D architectures, a densely connected network, a residual segmentation network, and an attention-gated U-Net—through a principled grid-search optimization pipeline. Rather than fusing model outputs with uniform or heuristic weights, we formulate ensemble construction as a constrained search problem over both fusion weights and the binarization threshold, with optimal values selected on the validation set via a Dice-driven objective. The pipeline further incorporates test-time augmentation on axis-flipped variants and morphological post-processing to suppress small disconnected false positives. Multi-modal information from FLAIR, DWI, and ADC sequences is integrated into a unified 3D input representation, and training is kept resource-efficient through automatic mixed precision, gradient accumulation, and cosine-annealed AdamW. Experiments on the ISLES 2022 dataset under a fixed 70/15/15 split show that DSANet attains a macro Dice Similarity Coefficient of 0.8780, a micro F1-score of 0.8780, and a recall of 0.9279, outperforming each constituent network and a DynUNet baseline by a clear margin. A fine-grained subgroup analysis confirms stable performance across lesion sizes (0.7306 on small infarcts and 0.8860 on large lesions) and anatomical regions (0.9541 in deep brain structures). These results demonstrate that carefully optimized heterogeneous ensembles offer a practical path to accurate stroke segmentation under constrained computational budgets. To support reproducibility and transparency, we provide a dedicated website hosting additional resources, including experimental analyses, error analysis, and source codes, are available at https://cimilab.github.io/StrokeDSANet/
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section" id="method">
+            <div class="container is-max-widescreen">
+                <h2 class="title is-3 section-title">Methodology</h2>
+
+                <article class="box content-block reveal-on-scroll method-top-figure">
+                    <img src="./static/images/methodoloy 2.jpeg" alt="Preprocessing and model pipeline"
+                        class="zoomable-image method-banner-image">
+                    <p class="is-size-7">
+                        Multi-modal preprocessing, architecture-level specialization, and validation-optimized
+                        score-level fusion for final inference.
+                    </p>
+                </article>
+
+                <div class="columns is-variable is-5">
+                    <div class="column is-7">
+                        <article class="box content-block reveal-on-scroll">
+                            <h3 class="title is-5">Algorithm 1: Constrained Grid-Search Optimization</h3>
+                            <pre class="algo-pre"><code>Algorithm 1 Constrained Grid Search for Heterogeneous 3D Ensemble
+Require: Validation dataset D_val = {(X_i, Y_i)}^N_{i=1}, Model pool M = {M_der, M_seg, M_att}, Candidate thresholds T, Lower-bound mu = 0.1, Step size delta = 0.05
+Ensure: Optimal ensemble weights w* and threshold t*
+
+Phase 1: Soft TTA Probability Extraction
+1: for all (X_i, Y_i) in D_val do
+2:     for all model M_k in M do
+3:         P_{k,i} <- ExtractSoftTTA(X_i, M_k)   // Before thresholding
+4:     end for
+5: end for
+
+Phase 2: Constrained Grid Search
+6: S_best <- 0
+7: for w1 <- mu to 1.0 step delta do
+8:     for w2 <- mu to (1.0 - w1) step delta do
+9:         w3 <- 1.0 - (w1 + w2)
+10:        if w3 < mu then
+11:            continue
+12:        end if
+13:        for all t in T do
+14:            S_current <- 0
+15:            for all (X_i, Y_i) in D_val do
+16:                P_ens <- sum_{k=1..3}(w_k * P_{k,i})
+17:                Y_hat_i <- I(P_ens > t)
+18:                S_current <- S_current + Dice(Y_hat_i, Y_i)
+19:            end for
+20:            if (S_current / N) > S_best then
+21:                S_best <- (S_current / N)
+22:                w* <- [w1, w2, w3]
+23:                t* <- t
+24:            end if
+25:        end for
+26:    end for
+27: end for
+28: return w*, t*</code></pre>
+                        </article>
+                    </div>
+
+                    <div class="column is-5">
+                        <article class="box content-block reveal-on-scroll">
+                            <h3 class="title is-5">Ensemble and Decision Formulation</h3>
+                            <p>
+                                The paper defines weighted ensemble fusion as:
+                            </p>
+                            <p class="equation-block">
+                                $$P_{final} = w_1 P_1 + w_2 P_2 + w_3 P_3,
+                                \quad w_1 + w_2 + w_3 = 1$$
+                            </p>
+                            <p>
+                                The final binary prediction is obtained by thresholding:
+                            </p>
+                            <p class="equation-block">
+                                $$\hat{Y} = \mathbb{1}[P_{final} \geq T], \quad T^* = 0.45$$
+                            </p>
+                            <p>
+                                Training follows the combined objective reported in the paper:
+                            </p>
+                            <p class="equation-block">
+                                $$L_{total} = \lambda_1 L_{Dice} + \lambda_2 L_{Focal},
+                                \quad \lambda_1 = 1.0,\; \lambda_2 = 1.0,\; \gamma = 2.0$$
+                            </p>
+                            <p>
+                                Test-time augmentation and morphological post-processing are applied after fusion to
+                                improve boundary consistency and suppress isolated false positives.
+                            </p>
+                        </article>
+
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Table M1: Training and Optimization Setup</h3>
+                            <table class="table is-fullwidth is-striped is-size-7 compact-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Dataset Split</th>
+                                        <td>70 / 15 / 15</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Patch Size</th>
+                                        <td>$64 \times 64 \times 64$</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Optimizer</th>
+                                        <td>AdamW + Cosine Annealing</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Learning Rate</th>
+                                        <td>1e-4</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Weight Decay</th>
+                                        <td>1e-5</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Batch Size</th>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <th>AMP</th>
+                                        <td>Enabled</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Threshold</th>
+                                        <td>0.45 (validation optimized)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Epochs</th>
+                                        <td>DERNet: 80, SegResNet/Attention U-Net: 100</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Final Ensemble Weights</th>
+                                        <td>DERNet 0.70, SegResNet 0.10, Attention U-Net 0.20</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Weight Search</th>
+                                        <td>Constrained grid search (step 0.05)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Loss</th>
+                                        <td>$L_{total}=\lambda_1L_{Dice}+\lambda_2L_{Focal}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="training">
+            <div class="container is-max-widescreen">
+                <h2 class="title is-3 section-title">Training Details</h2>
+
+                <article class="box content-block reveal-on-scroll">
+                    <img src="./static/images/fir-2.jpeg"
+                        alt="DSANet framework with DERNet, SegResNet, and Attention U-Net"
+                        class="result-hero zoomable-image">
+                    <p class="is-size-7 mt-3">
+                        Overview of the proposed network. The encoder–decoder backbone exchanges information
+                        through BAGF (Bidirectional Attention Gating Fusion) units that modulate both spatial and
+                        channel-wise feature flows instead of conventional skip connections. A BiMamba context module
+                        captures long-range contextual relationships, while the gated fusion suppresses irrelevant
+                        activations so that only lesion-discriminative features are propagated to the decoder,
+                        improving boundary localization and reducing false positives.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="results">
+            <div class="container is-max-widescreen">
+                <h2 class="title is-3 section-title">Experimental Results</h2>
+
+                <div class="columns is-variable is-4 is-multiline">
+                    <div class="column is-4">
+                        <article class="box table-card reveal-on-scroll h-100">
+                            <h3 class="title is-5 mb-4">Single-Model vs Ensemble</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead>
+                                        <tr>
+                                            <th>Model</th>
+                                            <th>Validation Dice</th>
+                                            <th>Test Dice</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>DERNet</td>
+                                            <td>0.8215</td>
+                                            <td>0.8136</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SegResNet</td>
+                                            <td>0.7801</td>
+                                            <td>0.7819</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Attention U-Net</td>
+                                            <td>0.7789</td>
+                                            <td>0.7274</td>
+                                        </tr>
+                                        <tr class="highlight-row-gradient">
+                                            <td><strong>DSANet</strong></td>
+                                            <td>-</td>
+                                            <td><strong>0.8780</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="is-size-7 mt-2 has-text-grey">Grid-search optimized weighted fusion outperforms
+                                individual backbones.</p>
+                        </article>
+                    </div>
+
+                    <div class="column is-4">
+                        <article class="box table-card reveal-on-scroll h-100">
+                            <h3 class="title is-5 mb-4">Subgroup Analysis</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead>
+                                        <tr>
+                                            <th>Sub-group</th>
+                                            <th>Dice Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Small Lesions</td>
+                                            <td>0.7306</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Large Lesions</td>
+                                            <td>0.8860</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Deep Brain</td>
+                                            <td>0.9541</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Superficial</td>
+                                            <td>0.8037</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lesion Core</td>
+                                            <td>0.9909</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Boundary</td>
+                                            <td>0.8350</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="column is-4">
+                        <article class="box table-card reveal-on-scroll h-100">
+                            <h3 class="title is-5 mb-4">Quantitative Metrics</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead>
+                                        <tr>
+                                            <th>Metric (Macro)</th>
+                                            <th>Mean Score</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Dice Coefficient</td>
+                                            <td><strong>0.8780</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>IoU</td>
+                                            <td>0.7826</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Precision (PPV)</td>
+                                            <td>0.8333</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Recall (Sens.)</td>
+                                            <td>0.9279</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="columns is-variable is-4 mt-5">
+
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Qualitative Validation</h3>
+                            <div class="image-wrapper-standard">
+                                <img src="./static/images/fig-6.jpeg" alt="Qualitative assessment"
+                                    class="zoomable-image">
+                            </div>
+                            <p class="is-size-7 mt-3">Qualitative slices across z-planes demonstrate stable lesion
+                                localization.</p>
+                        </article>
+                    </div>
+
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Performance Evaluation</h3>
+                            <div class="image-wrapper-standard">
+                                <img src="./static/images/performance1.png" alt="Preprocessing Effect"
+                                    class="zoomable-image">
+                            </div>
+                            <p class="is-size-7 mt-3">Performance trends across key metrics confirm the robustness
+                                of the proposed fusion strategy.</p>
+                        </article>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section class="section section-alt" id="analysis">
+            <div class="container is-max-widescreen">
+                <h2 class="title is-3 section-title">Error Analysis and Qualitative Assessment</h2>
+
+                <div class="columns is-variable is-4">
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Global Confusion Pattern</h3>
+                            <div class="image-wrapper-standard">
+                                <img src="./static/images/upcon.jpeg" alt="Confusion matrix" class="zoomable-image">
+                            </div>
+                            <p class="is-size-7 mt-2">High true-positive concentration supports strong voxel-level
+                                overlap.
+                                Remaining errors are concentrated near hard boundary regions.</p>
+                        </article>
+                    </div>
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Boundary Sensitivity</h3>
+                            <div class="image-wrapper-standard">
+                                <img src="./static/images/error boundary analysis.jpeg" alt="Boundary error analysis"
+                                    class="zoomable-image">
+                            </div>
+                            <p class="is-size-7 mt-2">Boundary regions remain the most challenging, but fusion + TTA
+                                improve
+                                continuity and suppress isolated false positives.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-alt" id="contributions">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 section-title">Main Contributions</h2>
+                <article class="box content-block reveal-on-scroll">
+                    <div class="content paper-content">
+                        <ol>
+                            <li>We propose DSANet, a heterogeneous 3D ensemble that integrates a densely connected network, a residual segmentation
+    network, and an attention-gated U-Net to capture complementary
+    spatial and contextual features from FLAIR, DWI, and ADC
+    sequences.</li>
+                            <li>We formulate ensemble construction as a constrained
+    grid-search problem that jointly optimizes fusion weights and
+    the binarization threshold on the validation set using a
+    Dice-driven objective, eliminating the need for hand-tuned or
+    uniform weighting schemes.</li>
+                            <li>We design a resource-efficient training and inference
+    pipeline that combines Automatic Mixed Precision, gradient
+    accumulation, Test-Time Augmentation, and morphological
+    post-processing, enabling accurate segmentation on a single
+    GPU without high-end hardware.</li>
+                            <li>We conduct extensive experiments on the ISLES 2022
+    dataset, achieving a macro Dice of 0.8780 and recall of 0.9279,
+    and provide a sub-group analysis across lesion sizes and
+    anatomical regions that demonstrates stable performance
+    under diverse clinical conditions.</li>
+                        </ol>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="section" id="citation">
+            <div class="container is-max-desktop">
+                <h2 class="title is-3 section-title">Citation</h2>
+                <div class="box content-block reveal-on-scroll">
+                    <pre><code>@article{DSANet2026,
+  author  = {Anonymized Authors},
+  title   = {DSANet: A Grid-Search Optimized Heterogeneous Ensemble for Ischemic Stroke Lesion Segmentation},
+  journal = {Under Review},
+  year    = {2026}
+}</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer publication-footer">
+        <div class="container is-max-desktop has-text-centered">
+            <p><strong>DSANet</strong> | Grid-search optimized and reproducible ischemic stroke lesion segmentation</p>
+            <p class="is-size-7">Template basis adapted from Nerfies and customized for publication presentation.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div id="imageModal" class="image-modal" aria-hidden="true" role="dialog" aria-label="Expanded figure view">
+        <button id="closeImageModal" class="image-modal-close" aria-label="Close image viewer">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="modalImage" src="" alt="Expanded preview">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</body>
+
+</html>
