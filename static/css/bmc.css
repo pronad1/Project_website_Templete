@@ -1,0 +1,293 @@
+/* ========================================================
+   Bangla MedConv – page-specific overrides on top of
+   the DSANet base (index.css + Bulma)
+   ======================================================== */
+
+/* ── Colour palette ── */
+:root {
+    --bmc-purple:      #6c3fc5;
+    --bmc-purple-dark: #4d2b95;
+    --bmc-orange:      #e07230;
+    --bmc-green:       #1a886b;
+    --nav-start:       #2d1a6b;
+    --nav-end:         #5c2d9e;
+}
+
+/* ── Navbar ── */
+.publication-navbar {
+    background: linear-gradient(120deg, var(--nav-start), var(--nav-end));
+}
+
+/* ── Hero ── */
+.publication-hero {
+    background:
+        linear-gradient(130deg, rgba(108,63,197,.08), rgba(224,114,48,.08)),
+        linear-gradient(180deg, #ffffff, #f4f0fc);
+}
+
+/* ── Tags ── */
+.publication-tags .tag {
+    background: #f0eaff;
+    color: var(--bmc-purple-dark);
+    border: 1px solid #d8ccf5;
+}
+
+/* ── Section title accent bar ── */
+.section-title {
+    position: relative;
+    padding-left: 0.9rem;
+}
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    height: 0.9em;
+    width: 4px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, var(--bmc-purple), var(--bmc-orange));
+}
+
+/* ── Lab card ── */
+.lab-credit-card { border-left: 4px solid var(--bmc-purple); }
+
+/* ── Metric cards ── */
+.metrics-row .column:nth-child(1) .metric-card {
+    background: linear-gradient(160deg,#faf8ff,#ede8ff);
+    border-color: rgba(108,63,197,.25);
+}
+.metrics-row .column:nth-child(2) .metric-card {
+    background: linear-gradient(160deg,#fff7f1,#ffe5d2);
+    border-color: rgba(224,114,48,.28);
+}
+.metrics-row .column:nth-child(3) .metric-card {
+    background: linear-gradient(160deg,#f0faf6,#d5f5e8);
+    border-color: rgba(26,136,107,.28);
+}
+.metrics-row .column:nth-child(4) .metric-card {
+    background: linear-gradient(160deg,#f4f6ff,#e6ebff);
+    border-color: rgba(80,105,217,.28);
+}
+
+/* ── Table highlight override ── */
+.highlight-row-gradient {
+    background: linear-gradient(90deg,#ede8ff 0%,#fff3e8 100%) !important;
+    border-left: 4px solid var(--bmc-purple);
+}
+
+/* ── Hero safety bars ── */
+.bmc-bar-model {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.2rem;
+}
+.bmc-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.2rem 0;
+}
+.bmc-bar-lang {
+    font-size: 0.72rem;
+    font-weight: 600;
+    width: 56px;
+    flex-shrink: 0;
+}
+.bmc-en { color: var(--bmc-purple); }
+.bmc-bn { color: var(--bmc-orange); }
+.bmc-bar-bg {
+    flex: 1;
+    height: 10px;
+    background: #ede8ff;
+    border-radius: 999px;
+    overflow: hidden;
+}
+.bmc-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1s ease;
+}
+.bmc-en-fill { background: linear-gradient(90deg,#6c3fc5,#9b6ef7); }
+.bmc-bn-fill { background: linear-gradient(90deg,#e07230,#f5a855); }
+.bmc-bar-val {
+    font-size: 0.72rem;
+    font-weight: 700;
+    width: 28px;
+    text-align: right;
+}
+.bmc-danger { color: #b33a22; }
+
+/* ── PDF button ── */
+.bmc-pdf-btn {
+    background: var(--bmc-purple);
+    color: #fff;
+    border: none;
+}
+.bmc-pdf-btn:hover { background: var(--bmc-purple-dark); color: #fff; }
+
+/* ── Download button ── */
+.bmc-download-btn {
+    background: linear-gradient(135deg,var(--bmc-purple-dark),var(--bmc-purple));
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 20px rgba(77,43,149,.35);
+}
+.bmc-download-btn:hover { opacity: .9; color: #fff; }
+
+/* ── Back-to-top override ── */
+.back-to-top {
+    background: linear-gradient(140deg,var(--bmc-purple-dark),var(--bmc-purple));
+}
+
+/* ── Hero input card ── */
+.hero-input-card {
+    background: linear-gradient(165deg,#ffffff,#f4f0ff);
+    border: 1px solid rgba(108,63,197,.18);
+}
+
+/* ── Stat grid (dataset section) ── */
+.bmc-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+}
+.bmc-stat {
+    border-radius: 10px;
+    padding: 0.75rem;
+    text-align: center;
+}
+.bmc-stat-val {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Source Serif 4', serif;
+    line-height: 1;
+}
+.bmc-stat-lbl { font-size: 0.72rem; font-weight: 600; }
+.bmc-stat-purple { background:#f4f0ff; border:1px solid #d8ccf5; }
+.bmc-stat-purple .bmc-stat-val { color:#4d2b95; }
+.bmc-stat-purple .bmc-stat-lbl { color:#5a3e8a; }
+.bmc-stat-orange { background:#fff7f1; border:1px solid #f5c8a0; }
+.bmc-stat-orange .bmc-stat-val { color:#8a4200; }
+.bmc-stat-orange .bmc-stat-lbl { color:#8a4200; }
+.bmc-stat-green  { background:#f0faf6; border:1px solid #b8e8d5; }
+.bmc-stat-green .bmc-stat-val  { color:#145c2e; }
+.bmc-stat-green .bmc-stat-lbl  { color:#145c2e; }
+.bmc-stat-blue   { background:#f0f4ff; border:1px solid #c2ceee; }
+.bmc-stat-blue .bmc-stat-val   { color:#1a3480; }
+.bmc-stat-blue .bmc-stat-lbl   { color:#1a3480; }
+
+/* ── Urgency tier badges ── */
+.tier-badge {
+    display: inline-block;
+    border-radius: 6px;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+.tier-emergency { background:#ffe0e0; color:#a00000; }
+.tier-urgent    { background:#fff3d6; color:#8a5100; }
+.tier-prompt    { background:#e8f4ff; color:#005592; }
+.tier-routine   { background:#e8f8ef; color:#145c2e; }
+.tier-reassure  { background:#f0f0f0; color:#454545; }
+
+/* ── 4-step pipeline ── */
+.pipeline-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.9rem;
+    margin-top: 1.2rem;
+}
+.pipeline-step {
+    background: #faf8ff;
+    border: 1px solid rgba(108,63,197,.15);
+    border-radius: 14px;
+    padding: 0.9rem;
+    text-align: center;
+    transition: transform .22s ease;
+}
+.pipeline-step:hover { transform: translateY(-3px); }
+.pipeline-step-num {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg,var(--bmc-purple),var(--bmc-orange));
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 0.5rem;
+}
+.pipeline-step-title { font-weight:700; font-size:.82rem; color:var(--nav-start); margin-bottom:.3rem; }
+.pipeline-step-desc  { font-size:.75rem; color:#4a5568; line-height:1.45; }
+
+/* ── RQ cards ── */
+.rq-card {
+    border-radius: 16px;
+    border: 1px solid rgba(108,63,197,.15);
+    padding: 1.4rem 1.2rem;
+    box-shadow: var(--shadow-soft);
+    height: 100%;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.rq-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-medium); }
+.rq-num  { font-family:'Source Serif 4',serif; font-size:2.2rem; font-weight:700; line-height:1; margin-bottom:.3rem; }
+.rq-head { font-weight:700; font-size:1.02rem; color:var(--nav-start); margin-bottom:.5rem; }
+.rq-body { font-size:.88rem; color:#3d3d5c; line-height:1.55; }
+.rq-1 { background:linear-gradient(160deg,#faf8ff,#ede8ff); }
+.rq-1 .rq-num { color:var(--bmc-purple); }
+.rq-2 { background:linear-gradient(160deg,#fff7f1,#ffe5d2); border-color:rgba(224,114,48,.2); }
+.rq-2 .rq-num { color:var(--bmc-orange); }
+.rq-3 { background:linear-gradient(160deg,#f0faf6,#d5f5e8); border-color:rgba(26,136,107,.2); }
+.rq-3 .rq-num { color:var(--bmc-green); }
+
+/* ── Contribution numbered list ── */
+.contrib-list { list-style:none; padding:0; margin:0; display:grid; gap:.85rem; }
+.contrib-list li { display:grid; grid-template-columns:2rem 1fr; gap:.7rem; align-items:start; }
+.contrib-num {
+    width:28px; height:28px;
+    background:linear-gradient(135deg,var(--bmc-purple),var(--bmc-purple-dark));
+    border-radius:50%;
+    color:#fff; font-weight:700; font-size:.82rem;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; margin-top:.1rem;
+}
+
+/* ── Conversation snippet ── */
+.conv-snippet {
+    background:#f9f8ff;
+    border:1px solid #d8cfee;
+    border-radius:12px;
+    padding:1rem 1.1rem;
+    font-size:.87rem;
+    line-height:1.6;
+}
+.conv-label { font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; margin-right:.4rem; }
+.p-label { color:var(--bmc-purple-dark); }
+.a-label { color:var(--bmc-green); }
+.conv-patient { color:#1a1a4d; }
+.conv-asst { color:#333; }
+.finding-tag {
+    display:inline-block; border-radius:8px;
+    padding:.15rem .5rem; font-size:.73rem; font-weight:700;
+    background:#ede8ff; color:var(--bmc-purple-dark); margin-left:.3rem;
+}
+
+/* ── Takeaway / no-bias boxes ── */
+.bmc-takeaway-box {
+    background:#faf8ff; border:1px solid #d8ccf5; border-radius:10px; padding:.9rem;
+}
+.bmc-takeaway-head { font-weight:700; font-size:.85rem; color:var(--bmc-purple-dark); margin-bottom:.35rem; }
+.bmc-takeaway-body { font-size:.82rem; color:#3a3a5c; line-height:1.55; }
+.bmc-nobias-box {
+    background:#f0faf6; border:1px solid #b8e8d5; border-radius:10px; padding:.9rem;
+}
+.bmc-nobias-head { font-weight:700; font-size:.85rem; color:#145c2e; margin-bottom:.3rem; }
+.bmc-nobias-body { font-size:.82rem; color:#1a3a2e; line-height:1.55; }
+
+/* ── Responsive ── */
+@media screen and (max-width:768px) {
+    .pipeline-steps { grid-template-columns:repeat(2,1fr); }
+    .bmc-stat-grid  { grid-template-columns:1fr 1fr; }
+}

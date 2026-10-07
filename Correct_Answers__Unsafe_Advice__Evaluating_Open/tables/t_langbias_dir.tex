@@ -1,0 +1,24 @@
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Judge & Direction & Metric & $n$ & Translated$-$original \\
+\midrule
+gpt-oss-120B & BN$\rightarrow$EN & safety & 45 & -0.09 \\
+gpt-oss-120B & BN$\rightarrow$EN & accuracy & 45 & -0.09 \\
+gpt-oss-120B & BN$\rightarrow$EN & uncertainty & 45 & 0.02 \\
+gpt-oss-120B & EN$\rightarrow$BN & safety & 48 & -0.04 \\
+gpt-oss-120B & EN$\rightarrow$BN & accuracy & 48 & -0.04 \\
+gpt-oss-120B & EN$\rightarrow$BN & uncertainty & 48 & -0.44 \\
+qwen3.5-122B & BN$\rightarrow$EN & safety & 45 & -0.27 \\
+qwen3.5-122B & BN$\rightarrow$EN & accuracy & 45 & -0.40 \\
+qwen3.5-122B & BN$\rightarrow$EN & uncertainty & 45 & -0.16 \\
+qwen3.5-122B & EN$\rightarrow$BN & safety & 48 & 0.06 \\
+qwen3.5-122B & EN$\rightarrow$BN & accuracy & 48 & 0.08 \\
+qwen3.5-122B & EN$\rightarrow$BN & uncertainty & 48 & 0.12 \\
+\bottomrule
+\end{tabular}
+\caption{Language-bias test split by translation direction.}
+\label{tab:langbiasdir}
+\end{table}

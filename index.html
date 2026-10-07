@@ -1,63 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="description"
-        content="DSANet: A Grid-Search Optimized Heterogeneous Ensemble for Ischemic Stroke Lesion Segmentation.">
-    <meta name="keywords"
-        content="DSANet, stroke lesion segmentation, DERNet, SegResNet, Attention U-Net, ensemble learning, ISLES 2022">
+    <meta name="description" content="Correct Answers, Unsafe Advice? Evaluating Open-Weight Vision-Language Models in Bangla Image-Grounded Medical Consultations.">
+    <meta name="keywords" content="Bangla MedConv, VLM safety, Bangla medical AI, chest X-ray">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>DSANet | Grid-Search Optimized Heterogeneous Ensemble</title>
-
+    <title>Bangla MedConv | VLM Safety in Bangla Medical Consultations</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./static/css/bulma.min.css">
     <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
-    <link rel="icon" href="./static/images/dsanet.png">
-
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            }
-        };
-    </script>
-    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="./static/css/bmc.css">
+    <link rel="icon" href="./static/images/bmc_logo.jpeg">
 </head>
-
 <body>
     <header class="site-header" id="top">
         <nav class="navbar publication-navbar" role="navigation" aria-label="main navigation">
             <div class="container is-max-desktop">
                 <div class="navbar-brand">
                     <a class="navbar-item brand-item" href="#top" aria-label="Go to top">
-                        <img src="./static/images/dsanet.png" alt="DSANet logo">
-                        <span>DSANet</span>
+                        <img src="./static/images/bmc_logo.jpeg" alt="Bangla MedConv logo">
+                        <span>Bangla MedConv</span>
                     </a>
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                        data-target="mainNavbar">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mainNavbar">
+                        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
                     </a>
                 </div>
-
                 <div id="mainNavbar" class="navbar-menu">
                     <div class="navbar-end">
                         <a class="navbar-item" href="#lab">Lab</a>
                         <a class="navbar-item" href="#abstract">Abstract</a>
+                        <a class="navbar-item" href="#dataset">Dataset</a>
                         <a class="navbar-item" href="#method">Method</a>
-                        <a class="navbar-item" href="#training">Training</a>
                         <a class="navbar-item" href="#results">Results</a>
-                        <a class="navbar-item" href="#analysis">Error Analysis</a>
+                        <a class="navbar-item" href="#rq2">Safety Gap</a>
+                        <a class="navbar-item" href="#judge">Judge</a>
                         <a class="navbar-item" href="#contributions">Contributions</a>
                         <a class="navbar-item" href="#citation">Citation</a>
                     </div>
@@ -70,85 +50,56 @@
                 <div class="container is-max-desktop">
                     <div class="columns is-vcentered">
                         <div class="column is-7-desktop">
+                            <span class="eyebrow">NLP for Medical AI &middot; Bangla</span>
                             <h1 class="title is-1 publication-title">
-                                DSANet: A Grid-Search Optimized
-                                Heterogeneous Ensemble for Ischemic Stroke
-                                Lesion Segmentation
+                                Correct Answers, Unsafe Advice?<br>
+                                Evaluating Open-Weight VLMs in<br>
+                                Bangla Medical Consultations
                             </h1>
                             <p class="subtitle publication-subtitle">
-                                A practical multi-model pipeline that balances segmentation quality, interpretability,
-                                and computational
-                                feasibility for constrained clinical environments.
+                                A first benchmark of image-grounded, multi-turn medical conversations in
+                                <strong>Bangla &amp; English</strong> &mdash; VQA accuracy barely predicts safety,
+                                and identical patients receive less safe advice in Bangla.
                             </p>
-
                             <div class="tags publication-tags">
-                                <span class="tag is-medium">ISLES 2022</span>
-                                <span class="tag is-medium">FLAIR + DWI + ADC</span>
-                                <span class="tag is-medium">Grid-Search Optimized Fusion</span>
+                                <span class="tag is-medium">Bangla MedConv</span>
+                                <span class="tag is-medium">1,920 Conversations</span>
+                                <span class="tag is-medium">6 Open-Weight VLMs</span>
+                                <span class="tag is-medium">Chest X-Ray Safety</span>
                             </div>
-
                             <div class="publication-links">
-                                <a href="#citation" class="button is-dark is-rounded">
-                                    <span class="icon"><i class="fas fa-file-alt"></i></span>
-                                    <span>Paper</span>
+                                <a href="./Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf" target="_blank" rel="noopener noreferrer" class="button is-rounded bmc-pdf-btn">
+                                    <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper (PDF)</span>
                                 </a>
-                                <a href="https://github.com/CIMILab/deploy_DSANet_ISLES22" class="button is-dark is-rounded">
-                                    <span class="icon"><i class="fab fa-github"></i></span>
-                                    <span>Code</span>
+                                <a href="https://github.com/CIMILab" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
                                 </a>
-                                <a href="https://zenodo.org/records/7153326" class="button is-dark is-rounded">
-                                    <span class="icon"><i class="far fa-images"></i></span>
-                                    <span>Dataset</span>
+                                <a href="#dataset" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="fas fa-database"></i></span><span>Dataset</span>
                                 </a>
                             </div>
                         </div>
-
                         <div class="column is-5-desktop">
                             <article class="hero-input-card reveal-on-scroll">
-                                <h3 class="title is-6 hero-input-title">Input Preview</h3>
-                                <div class="hero-input-grid">
-                                    <img src="./static/images/normal1.jpeg" alt="Input MRI sample 1"
-                                        class="zoomable-image hero-input-image">
-                                    <img src="./static/images/normal2.jpeg" alt="Input MRI sample 2"
-                                        class="zoomable-image hero-input-image">
-                                    <img src="./static/images/abnormal_dwi_3.jpg" alt="Input MRI sample 3"
-                                        class="zoomable-image hero-input-image">
-                                    <img src="./static/images/abnormal_dwi_8.jpg" alt="Input MRI sample 4"
-                                        class="zoomable-image hero-input-image">
-                                </div>
-                                <p class="hero-input-caption">
-                                    Representative standardized inputs used before ensemble inference.
-                                </p>
+                                <h3 class="title is-6 hero-input-title">Clinical Safety Score &mdash; EN vs. BN (1&ndash;5)</h3>
+                                <p class="bmc-bar-model">Gemma 4 31B</p>
+                                <div class="bmc-bar-row"><span class="bmc-bar-lang bmc-en">English</span><div class="bmc-bar-bg"><div class="bmc-bar-fill bmc-en-fill" style="width:84.6%"></div></div><span class="bmc-bar-val">4.23</span></div>
+                                <div class="bmc-bar-row"><span class="bmc-bar-lang bmc-bn">Bangla</span><div class="bmc-bar-bg"><div class="bmc-bar-fill bmc-bn-fill" style="width:82.2%"></div></div><span class="bmc-bar-val">4.11</span></div>
+                                <p class="bmc-bar-model" style="margin-top:0.55rem;">MedGemma 27B</p>
+                                <div class="bmc-bar-row"><span class="bmc-bar-lang bmc-en">English</span><div class="bmc-bar-bg"><div class="bmc-bar-fill bmc-en-fill" style="width:79.8%"></div></div><span class="bmc-bar-val">3.99</span></div>
+                                <div class="bmc-bar-row"><span class="bmc-bar-lang bmc-bn">Bangla</span><div class="bmc-bar-bg"><div class="bmc-bar-fill bmc-bn-fill" style="width:79.8%"></div></div><span class="bmc-bar-val">3.99</span></div>
+                                <p class="bmc-bar-model" style="margin-top:0.55rem;">Qwen2.5-VL 7B</p>
+                                <div class="bmc-bar-row"><span class="bmc-bar-lang bmc-en">English</span><div class="bmc-bar-bg"><div class="bmc-bar-fill bmc-en-fill" style="width:65.2%"></div></div><span class="bmc-bar-val">3.26</span></div>
+                                <div class="bmc-bar-row"><span class="bmc-bar-lang bmc-bn">Bangla</span><div class="bmc-bar-bg"><div class="bmc-bar-fill bmc-bn-fill" style="width:39.2%"></div></div><span class="bmc-bar-val bmc-danger">1.96</span></div>
+                                <p class="hero-input-caption" style="margin-top:0.75rem;">Overall gap: <strong>&minus;0.44 pts</strong> in Bangla (95% CI 0.34&ndash;0.54). Qwen2.5-VL looped in <strong>83%</strong> of Bangla conversations.</p>
                             </article>
                         </div>
-
                     </div>
-
                     <div class="columns is-multiline metrics-row">
-                        <div class="column is-3-desktop is-6-tablet">
-                            <article class="metric-card reveal-on-scroll">
-                                <p class="metric-label">Macro Dice</p>
-                                <p class="metric-value" data-countup="0.8780">0.0000</p>
-                            </article>
-                        </div>
-                        <div class="column is-3-desktop is-6-tablet">
-                            <article class="metric-card reveal-on-scroll">
-                                <p class="metric-label">Micro F1</p>
-                                <p class="metric-value" data-countup="0.8780">0.0000</p>
-                            </article>
-                        </div>
-                        <div class="column is-3-desktop is-6-tablet">
-                            <article class="metric-card reveal-on-scroll">
-                                <p class="metric-label">Macro Recall</p>
-                                <p class="metric-value" data-countup="0.9279">0.0000</p>
-                            </article>
-                        </div>
-                        <div class="column is-3-desktop is-6-tablet">
-                            <article class="metric-card reveal-on-scroll">
-                                <p class="metric-label">Optimal Threshold</p>
-                                <p class="metric-value">0.45</p>
-                            </article>
-                        </div>
+                        <div class="column is-3-desktop is-6-tablet"><article class="metric-card reveal-on-scroll"><p class="metric-label">Conversations</p><p class="metric-value" data-countup="1920">0</p></article></div>
+                        <div class="column is-3-desktop is-6-tablet"><article class="metric-card reveal-on-scroll"><p class="metric-label">Safety Gap EN&ndash;BN</p><p class="metric-value" data-countup="0.44">0.00</p></article></div>
+                        <div class="column is-3-desktop is-6-tablet"><article class="metric-card reveal-on-scroll"><p class="metric-label">VQA&ndash;Safety Rho</p><p class="metric-value" data-countup="0.17">0.00</p></article></div>
+                        <div class="column is-3-desktop is-6-tablet"><article class="metric-card reveal-on-scroll"><p class="metric-label">Judge Detection %</p><p class="metric-value" data-countup="84.9">0.0</p></article></div>
                     </div>
                 </div>
             </div>
@@ -156,7 +107,7 @@
     </header>
 
     <main>
-
+        <!-- Lab -->
         <section class="section" id="lab">
             <div class="container is-max-desktop">
                 <article class="lab-credit-card reveal-on-scroll" aria-label="Research lab attribution">
@@ -164,444 +115,357 @@
                     <div class="lab-credit-content">
                         <p class="lab-credit-label">Research Lab</p>
                         <h2 class="lab-credit-title">Computation Informatics and Machine Intelligence Lab (CIMILab)</h2>
-                        <p class="lab-credit-text">
-                            This work was carried out at CIMILab, where DSANet was designed, trained, and evaluated for
-                            ischemic stroke lesion segmentation.
-                        </p>
+                        <p class="lab-credit-text">This work was carried out at <strong>CIMILab</strong>. We develop open, reproducible benchmarks and pipelines for clinical AI safety evaluation, with a focus on low-resource languages and underserved populations.</p>
                         <div class="lab-credit-links">
-                            <a class="lab-github-link" href="https://github.com/CIMILab" target="_blank"
-                                rel="noopener noreferrer" aria-label="Visit CIMILab GitHub page">
-                                <span class="icon"><i class="fab fa-github"></i></span>
-                                <span>CIMILab GitHub</span>
-                            </a>
+                            <a class="lab-github-link" href="https://github.com/CIMILab" target="_blank" rel="noopener noreferrer"><span class="icon"><i class="fab fa-github"></i></span><span>CIMILab GitHub</span></a>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section class="section" id="input-standard">
-            <div class="container is-max-desktop">
-
-                <article class="box content-block reveal-on-scroll mt-5">
-                    <img src="./static/images/update.png"
-                        alt="High-level DSANet architecture and fusion workflow" class="result-hero zoomable-image">
-                    <p class="is-size-7 mt-3">
-                        <strong></strong> Overview of the proposed DSANet framework. Preprocessed multi-modal
-                        MRI volumes (FLAIR, DWI, ADC) are processed in parallel by three complementary 3D networks
-                        (DERNet, SegResNet, and Attention U-Net). Their soft predictions are fused through weighted
-                        averaging, where the weights and binarization threshold are jointly selected by the constrained
-                        grid search in Algorithm 1, followed by morphological post-processing.
-                    </p>
-                </article>
-            </div>
-        </section>
-
-
+        <!-- Abstract -->
         <section class="section" id="abstract">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 section-title">Abstract</h2>
                 <div class="content paper-content reveal-on-scroll">
-                    <p>
-                        Accurate segmentation of ischemic stroke lesions from multi-modal MRI is a critical prerequisite for timely clinical decision-making. This paper presents DSANet, a heterogeneous ensemble framework that couples three complementary 3D architectures, a densely connected network, a residual segmentation network, and an attention-gated U-Net—through a principled grid-search optimization pipeline. Rather than fusing model outputs with uniform or heuristic weights, we formulate ensemble construction as a constrained search problem over both fusion weights and the binarization threshold, with optimal values selected on the validation set via a Dice-driven objective. The pipeline further incorporates test-time augmentation on axis-flipped variants and morphological post-processing to suppress small disconnected false positives. Multi-modal information from FLAIR, DWI, and ADC sequences is integrated into a unified 3D input representation, and training is kept resource-efficient through automatic mixed precision, gradient accumulation, and cosine-annealed AdamW. Experiments on the ISLES 2022 dataset under a fixed 70/15/15 split show that DSANet attains a macro Dice Similarity Coefficient of 0.8780, a micro F1-score of 0.8780, and a recall of 0.9279, outperforming each constituent network and a DynUNet baseline by a clear margin. A fine-grained subgroup analysis confirms stable performance across lesion sizes (0.7306 on small infarcts and 0.8860 on large lesions) and anatomical regions (0.9541 in deep brain structures). These results demonstrate that carefully optimized heterogeneous ensembles offer a practical path to accurate stroke segmentation under constrained computational budgets. To support reproducibility and transparency, we provide a dedicated website hosting additional resources, including experimental analyses, error analysis, and source codes, are available at https://cimilab.github.io/StrokeDSANet/
-                    </p>
+                    <p>Vision-language models (VLMs) for medicine are usually evaluated with single-turn visual question answering (VQA), and medical AI in Bangla &mdash; a language with over <strong>250 million speakers</strong> &mdash; has been evaluated only this way. We ask whether <em>correct answers imply safe advice</em>. We present <strong>Bangla MedConv (BMC)</strong>, a benchmark of <strong>160 chest X-ray scenarios</strong> with guideline-based urgency ground truth, in which a simulated patient or relative converses with six open-weight VLMs in paired English and Bangla runs (<strong>1,920 conversations</strong>, all run locally). A primary LLM judge, validated against two human annotators, deliberately corrupted conversations, and a translation-based bias test scores clinical safety, accuracy and uncertainty handling; a 1,147-question bilingual VQA probe measures recognition.</p>
+                    <p>Three findings emerge: <strong>(1) VQA accuracy barely predicts safety</strong> (per-image &rho;&nbsp;=&nbsp;0.17; &rho;&nbsp;=&nbsp;0.05 in English). <strong>(2) The same patient receives less safe advice in Bangla</strong>: safety drops 0.44 points on a 5-point scale (95% CI 0.34&ndash;0.54), significantly for four of six models; two models collapse into repetition loops in Bangla (83% and 10% vs. &le;0.6% in English). <strong>(3) The judge caught 85% of inserted safety failures</strong> and showed no language bias. More than a quarter of pneumothorax conversations ended without any unconditional referral.</p>
+                </div>
+                <h3 class="title is-5" style="margin-top:2rem;">Research Questions</h3>
+                <div class="columns is-variable is-4 reveal-on-scroll">
+                    <div class="column"><div class="rq-card rq-1"><p class="rq-num">RQ1</p><p class="rq-head">VQA &ne; Safety</p><p class="rq-body">Does single-turn VQA accuracy predict safety in multi-turn, image-grounded medical consultations?</p></div></div>
+                    <div class="column"><div class="rq-card rq-2"><p class="rq-num">RQ2</p><p class="rq-head">Bangla Safety Gap</p><p class="rq-body">Is there an English&ndash;Bangla safety gap for identical chest X-ray scenarios?</p></div></div>
+                    <div class="column"><div class="rq-card rq-3"><p class="rq-num">RQ3</p><p class="rq-head">Judge Reliability</p><p class="rq-body">Is an open-weight LLM judge reliable, and is it biased by language?</p></div></div>
                 </div>
             </div>
         </section>
 
-
-
-        <section class="section" id="method">
+        <!-- Dataset -->
+        <section class="section section-alt" id="dataset">
             <div class="container is-max-widescreen">
-                <h2 class="title is-3 section-title">Methodology</h2>
-
-                <article class="box content-block reveal-on-scroll method-top-figure">
-                    <img src="./static/images/methodoloy 2.jpeg" alt="Preprocessing and model pipeline"
-                        class="zoomable-image method-banner-image">
-                    <p class="is-size-7">
-                        Multi-modal preprocessing, architecture-level specialization, and validation-optimized
-                        score-level fusion for final inference.
-                    </p>
-                </article>
-
+                <h2 class="title is-3 section-title">The Bangla MedConv Benchmark</h2>
                 <div class="columns is-variable is-5">
                     <div class="column is-7">
                         <article class="box content-block reveal-on-scroll">
-                            <h3 class="title is-5">Algorithm 1: Constrained Grid-Search Optimization</h3>
-                            <pre class="algo-pre"><code>Algorithm 1 Constrained Grid Search for Heterogeneous 3D Ensemble
-Require: Validation dataset D_val = {(X_i, Y_i)}^N_{i=1}, Model pool M = {M_der, M_seg, M_att}, Candidate thresholds T, Lower-bound mu = 0.1, Step size delta = 0.05
-Ensure: Optimal ensemble weights w* and threshold t*
-
-Phase 1: Soft TTA Probability Extraction
-1: for all (X_i, Y_i) in D_val do
-2:     for all model M_k in M do
-3:         P_{k,i} <- ExtractSoftTTA(X_i, M_k)   // Before thresholding
-4:     end for
-5: end for
-
-Phase 2: Constrained Grid Search
-6: S_best <- 0
-7: for w1 <- mu to 1.0 step delta do
-8:     for w2 <- mu to (1.0 - w1) step delta do
-9:         w3 <- 1.0 - (w1 + w2)
-10:        if w3 < mu then
-11:            continue
-12:        end if
-13:        for all t in T do
-14:            S_current <- 0
-15:            for all (X_i, Y_i) in D_val do
-16:                P_ens <- sum_{k=1..3}(w_k * P_{k,i})
-17:                Y_hat_i <- I(P_ens > t)
-18:                S_current <- S_current + Dice(Y_hat_i, Y_i)
-19:            end for
-20:            if (S_current / N) > S_best then
-21:                S_best <- (S_current / N)
-22:                w* <- [w1, w2, w3]
-23:                t* <- t
-24:            end if
-25:        end for
-26:    end for
-27: end for
-28: return w*, t*</code></pre>
+                            <h3 class="title is-5">Dataset Composition</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead><tr><th>Finding</th><th>n</th><th>Urgency Tier</th><th>Female</th><th>Median Age</th><th>AP View</th><th>Inpatient</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-row-gradient"><td><strong>Pneumothorax</strong></td><td>15</td><td><span class="tier-badge tier-emergency">Emergency</span></td><td>8</td><td>34.0</td><td>6</td><td>15</td></tr>
+                                        <tr><td>Pneumonia</td><td>15</td><td><span class="tier-badge tier-urgent">Urgent</span></td><td>5</td><td>46.0</td><td>11</td><td>13</td></tr>
+                                        <tr><td>Mass</td><td>15</td><td><span class="tier-badge tier-prompt">Prompt</span></td><td>3</td><td>54.0</td><td>7</td><td>11</td></tr>
+                                        <tr><td>Nodule</td><td>15</td><td><span class="tier-badge tier-prompt">Prompt</span></td><td>7</td><td>62.0</td><td>4</td><td>4</td></tr>
+                                        <tr><td>Pleural Effusion</td><td>15</td><td><span class="tier-badge tier-prompt">Prompt</span></td><td>8</td><td>55.0</td><td>8</td><td>13</td></tr>
+                                        <tr><td>Cardiomegaly</td><td>15</td><td><span class="tier-badge tier-routine">Routine</span></td><td>7</td><td>43.0</td><td>6</td><td>8</td></tr>
+                                        <tr><td>Atelectasis</td><td>15</td><td><span class="tier-badge tier-routine">Routine</span></td><td>8</td><td>54.0</td><td>10</td><td>13</td></tr>
+                                        <tr><td>Infiltration</td><td>15</td><td><span class="tier-badge tier-routine">Routine</span></td><td>8</td><td>41.0</td><td>11</td><td>12</td></tr>
+                                        <tr><td>No Finding</td><td>40</td><td><span class="tier-badge tier-reassure">Reassure</span></td><td>20</td><td>49.5</td><td>0</td><td>9</td></tr>
+                                        <tr style="font-weight:700;background:#f0eaff;"><td>Total</td><td>160</td><td>&mdash;</td><td>74</td><td>&mdash;</td><td>63</td><td>98</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="is-size-7 mt-2 has-text-grey">NIH ChestX-ray14 bounding-box subset; one patient per image. Urgency from BTS, NICE NG250 and NICE NG12 guidelines.</p>
                         </article>
                     </div>
-
                     <div class="column is-5">
-                        <article class="box content-block reveal-on-scroll">
-                            <h3 class="title is-5">Ensemble and Decision Formulation</h3>
-                            <p>
-                                The paper defines weighted ensemble fusion as:
-                            </p>
-                            <p class="equation-block">
-                                $$P_{final} = w_1 P_1 + w_2 P_2 + w_3 P_3,
-                                \quad w_1 + w_2 + w_3 = 1$$
-                            </p>
-                            <p>
-                                The final binary prediction is obtained by thresholding:
-                            </p>
-                            <p class="equation-block">
-                                $$\hat{Y} = \mathbb{1}[P_{final} \geq T], \quad T^* = 0.45$$
-                            </p>
-                            <p>
-                                Training follows the combined objective reported in the paper:
-                            </p>
-                            <p class="equation-block">
-                                $$L_{total} = \lambda_1 L_{Dice} + \lambda_2 L_{Focal},
-                                \quad \lambda_1 = 1.0,\; \lambda_2 = 1.0,\; \gamma = 2.0$$
-                            </p>
-                            <p>
-                                Test-time augmentation and morphological post-processing are applied after fusion to
-                                improve boundary consistency and suppress isolated false positives.
-                            </p>
-                        </article>
-
-                        <article class="box figure-card reveal-on-scroll">
-                            <h3 class="title is-6">Table M1: Training and Optimization Setup</h3>
-                            <table class="table is-fullwidth is-striped is-size-7 compact-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Dataset Split</th>
-                                        <td>70 / 15 / 15</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Patch Size</th>
-                                        <td>$64 \times 64 \times 64$</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Optimizer</th>
-                                        <td>AdamW + Cosine Annealing</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Learning Rate</th>
-                                        <td>1e-4</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Weight Decay</th>
-                                        <td>1e-5</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Batch Size</th>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <th>AMP</th>
-                                        <td>Enabled</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Threshold</th>
-                                        <td>0.45 (validation optimized)</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Epochs</th>
-                                        <td>DERNet: 80, SegResNet/Attention U-Net: 100</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Final Ensemble Weights</th>
-                                        <td>DERNet 0.70, SegResNet 0.10, Attention U-Net 0.20</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Weight Search</th>
-                                        <td>Constrained grid search (step 0.05)</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Loss</th>
-                                        <td>$L_{total}=\lambda_1L_{Dice}+\lambda_2L_{Focal}$</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <article class="box content-block reveal-on-scroll" style="height:100%;">
+                            <h3 class="title is-5">Benchmark Statistics</h3>
+                            <div class="bmc-stat-grid">
+                                <div class="bmc-stat bmc-stat-purple"><p class="bmc-stat-val">160</p><p class="bmc-stat-lbl">X-Ray Scenarios</p></div>
+                                <div class="bmc-stat bmc-stat-orange"><p class="bmc-stat-val">1,920</p><p class="bmc-stat-lbl">Conversations</p></div>
+                                <div class="bmc-stat bmc-stat-green"><p class="bmc-stat-val">1,147</p><p class="bmc-stat-lbl">VQA Questions</p></div>
+                                <div class="bmc-stat bmc-stat-blue"><p class="bmc-stat-val">6</p><p class="bmc-stat-lbl">Open-Weight VLMs</p></div>
+                            </div>
+                            <p style="font-size:0.84rem;line-height:1.55;margin-bottom:0.5rem;">Each scenario is paired in <strong>English and Bangla</strong>. The simulated patient or relative converses naturally for up to <strong>12 turns</strong>; the image is shared within the first three turns.</p>
+                            <p style="font-size:0.84rem;line-height:1.55;"><strong>98 inpatient</strong> + <strong>62 outpatient</strong> scenarios; 86 men and 74 women (age 47.3&plusmn;16.8).</p>
                         </article>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section class="section section-alt" id="training">
-            <div class="container is-max-widescreen">
-                <h2 class="title is-3 section-title">Training Details</h2>
-
-                <article class="box content-block reveal-on-scroll">
-                    <img src="./static/images/fir-2.jpeg"
-                        alt="DSANet framework with DERNet, SegResNet, and Attention U-Net"
-                        class="result-hero zoomable-image">
-                    <p class="is-size-7 mt-3">
-                        Overview of the proposed network. The encoder–decoder backbone exchanges information
-                        through BAGF (Bidirectional Attention Gating Fusion) units that modulate both spatial and
-                        channel-wise feature flows instead of conventional skip connections. A BiMamba context module
-                        captures long-range contextual relationships, while the gated fusion suppresses irrelevant
-                        activations so that only lesion-discriminative features are propagated to the decoder,
-                        improving boundary localization and reducing false positives.
-                    </p>
+                <article class="box content-block reveal-on-scroll mt-5">
+                    <h3 class="title is-5">Evaluated Models and Roles</h3>
+                    <div class="table-container">
+                        <table class="table is-fullwidth custom-gradient-table is-size-7">
+                            <thead><tr><th>Role</th><th>Model</th><th>Notes</th></tr></thead>
+                            <tbody>
+                                <tr><td><span class="tag" style="background:#ede8ff;color:#4d2b95;">Assistant</span></td><td>Gemma 4 31B</td><td>General VLM; language-robust</td></tr>
+                                <tr><td><span class="tag" style="background:#ede8ff;color:#4d2b95;">Assistant</span></td><td>MedGemma 27B</td><td>Medical VLM; language-robust</td></tr>
+                                <tr><td><span class="tag" style="background:#ede8ff;color:#4d2b95;">Assistant</span></td><td>MedGemma 4B</td><td>Medical VLM; 46.6% Bangla compliance</td></tr>
+                                <tr><td><span class="tag" style="background:#ede8ff;color:#4d2b95;">Assistant</span></td><td>Mistral Small 3.2 24B</td><td>General VLM; 10% Bangla loop rate</td></tr>
+                                <tr><td><span class="tag" style="background:#ede8ff;color:#4d2b95;">Assistant</span></td><td>Llama 4 Scout</td><td>Mixture-of-experts general VLM</td></tr>
+                                <tr class="highlight-row-gradient"><td><span class="tag" style="background:#ede8ff;color:#4d2b95;">Assistant</span></td><td><strong>Qwen2.5-VL 7B</strong></td><td><strong>83.1% Bangla loop rate</strong> &mdash; severe breakdown</td></tr>
+                                <tr><td><span class="tag" style="background:#e8f4ff;color:#005592;">Writer / Simulator</span></td><td>Qwen3.5-122B</td><td>Not evaluated; scenario generation and patient simulation</td></tr>
+                                <tr><td><span class="tag" style="background:#e8f8ef;color:#145c2e;">Primary Judge</span></td><td>gpt-oss-120B</td><td>Text-only; reads ground truth; scores all 1,920 conversations</td></tr>
+                                <tr><td><span class="tag" style="background:#e8f8ef;color:#145c2e;">Second Judge</span></td><td>Qwen3.5-122B</td><td>Sees image and ground truth; 480-conversation subset</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="is-size-7 mt-2 has-text-grey">All models ran locally with Ollama on NVIDIA H100 GPUs. Temperature 0.3 for assistants, 0.7 for simulator.</p>
                 </article>
             </div>
         </section>
 
-        <section class="section" id="results">
+        <!-- Method -->
+        <section class="section" id="method">
             <div class="container is-max-widescreen">
-                <h2 class="title is-3 section-title">Experimental Results</h2>
-
-                <div class="columns is-variable is-4 is-multiline">
-                    <div class="column is-4">
-                        <article class="box table-card reveal-on-scroll h-100">
-                            <h3 class="title is-5 mb-4">Single-Model vs Ensemble</h3>
-                            <div class="table-container">
-                                <table class="table is-fullwidth custom-gradient-table is-size-7">
-                                    <thead>
-                                        <tr>
-                                            <th>Model</th>
-                                            <th>Validation Dice</th>
-                                            <th>Test Dice</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>DERNet</td>
-                                            <td>0.8215</td>
-                                            <td>0.8136</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SegResNet</td>
-                                            <td>0.7801</td>
-                                            <td>0.7819</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Attention U-Net</td>
-                                            <td>0.7789</td>
-                                            <td>0.7274</td>
-                                        </tr>
-                                        <tr class="highlight-row-gradient">
-                                            <td><strong>DSANet</strong></td>
-                                            <td>-</td>
-                                            <td><strong>0.8780</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <p class="is-size-7 mt-2 has-text-grey">Grid-search optimized weighted fusion outperforms
-                                individual backbones.</p>
-                        </article>
-                    </div>
-
-                    <div class="column is-4">
-                        <article class="box table-card reveal-on-scroll h-100">
-                            <h3 class="title is-5 mb-4">Subgroup Analysis</h3>
-                            <div class="table-container">
-                                <table class="table is-fullwidth custom-gradient-table is-size-7">
-                                    <thead>
-                                        <tr>
-                                            <th>Sub-group</th>
-                                            <th>Dice Score</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Small Lesions</td>
-                                            <td>0.7306</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Large Lesions</td>
-                                            <td>0.8860</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Deep Brain</td>
-                                            <td>0.9541</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Superficial</td>
-                                            <td>0.8037</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lesion Core</td>
-                                            <td>0.9909</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Boundary</td>
-                                            <td>0.8350</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </article>
-                    </div>
-
-                    <div class="column is-4">
-                        <article class="box table-card reveal-on-scroll h-100">
-                            <h3 class="title is-5 mb-4">Quantitative Metrics</h3>
-                            <div class="table-container">
-                                <table class="table is-fullwidth custom-gradient-table is-size-7">
-                                    <thead>
-                                        <tr>
-                                            <th>Metric (Macro)</th>
-                                            <th>Mean Score</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Dice Coefficient</td>
-                                            <td><strong>0.8780</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>IoU</td>
-                                            <td>0.7826</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Precision (PPV)</td>
-                                            <td>0.8333</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Recall (Sens.)</td>
-                                            <td>0.9279</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </article>
-                    </div>
+                <h2 class="title is-3 section-title">Pipeline Overview</h2>
+                <div class="pipeline-steps reveal-on-scroll">
+                    <div class="pipeline-step"><div class="pipeline-step-num">1</div><p class="pipeline-step-title">Scenario Construction</p><p class="pipeline-step-desc">160 NIH ChestX-ray14 images with guideline urgency tiers. Qwen3.5-122B writes patient profiles and openings; Bangla translations reviewed by a native speaker.</p></div>
+                    <div class="pipeline-step"><div class="pipeline-step-num">2</div><p class="pipeline-step-title">Paired Simulation</p><p class="pipeline-step-desc">Each scenario runs in English and Bangla. The simulated patient sends up to 12 turns; the image appears within the first 3.</p></div>
+                    <div class="pipeline-step"><div class="pipeline-step-num">3</div><p class="pipeline-step-title">LLM Judge Scoring</p><p class="pipeline-step-desc">gpt-oss-120B scores Safety, Accuracy and Uncertainty (1&ndash;5) with a tier-anchored rubric.</p></div>
+                    <div class="pipeline-step"><div class="pipeline-step-num">4</div><p class="pipeline-step-title">Judge Validation</p><p class="pipeline-step-desc">Perturbation tests, translation-based bias test, human checklist and a second judge &mdash; no clinicians required.</p></div>
                 </div>
-
+                <article class="box content-block reveal-on-scroll mt-5 method-top-figure">
+                    <img src="./static/images/figS_score_dist.png" alt="Score distributions across models and languages" class="zoomable-image method-banner-image">
+                    <p class="is-size-7 mt-3"><strong>Score distributions</strong> across models and languages for all 1,920 conversations scored by the primary judge.</p>
+                </article>
                 <div class="columns is-variable is-4 mt-5">
-
                     <div class="column is-6">
-                        <article class="box figure-card reveal-on-scroll">
-                            <h3 class="title is-6">Qualitative Validation</h3>
-                            <div class="image-wrapper-standard">
-                                <img src="./static/images/fig-6.jpeg" alt="Qualitative assessment"
-                                    class="zoomable-image">
-                            </div>
-                            <p class="is-size-7 mt-3">Qualitative slices across z-planes demonstrate stable lesion
-                                localization.</p>
+                        <article class="box content-block reveal-on-scroll">
+                            <h3 class="title is-5">Algorithm 1: Scenario Construction</h3>
+                            <pre class="algo-pre"><code>Require: study set S (image, finding, location, tier, view, devices)
+For each s in S:
+  setting &lt;- INPATIENT if AP view or major device else OUTPATIENT
+  sample profile, reason, symptoms(s.finding), intent, traits
+  repeat
+    scenario, opening_EN &lt;- Writer(facts, setting, traits)
+  until no diagnosis term and no history recitation (max 3 tries)
+  repeat
+    opening_BN &lt;- Translate(opening_EN, glossary)
+  until Bangla script, no leak, X-ray term intact
+native-speaker review of all opening_BN</code></pre>
                         </article>
                     </div>
-
                     <div class="column is-6">
-                        <article class="box figure-card reveal-on-scroll">
-                            <h3 class="title is-6">Performance Evaluation</h3>
-                            <div class="image-wrapper-standard">
-                                <img src="./static/images/performance1.png" alt="Preprocessing Effect"
-                                    class="zoomable-image">
-                            </div>
-                            <p class="is-size-7 mt-3">Performance trends across key metrics confirm the robustness
-                                of the proposed fusion strategy.</p>
+                        <article class="box content-block reveal-on-scroll">
+                            <h3 class="title is-5">Algorithm 2: Paired Conversation Simulation</h3>
+                            <pre class="algo-pre"><code>Require: scenario s, model M, language l, simulator U, T_max=12
+u &lt;- UploadTurn(s)              // same for all M, l
+p_1 &lt;- s.opening_l; H_M &lt;- [sys_l]; H_U &lt;- [sim(s,l)]
+For k = 1 ... T_max:
+  append p_k to H_M (+ image and note if k=u)
+  a_k &lt;- M(H_M)                 // max 1,000 tokens
+  p_{k+1} &lt;- U(H_U + a_k)
+  if p_{k+1} contains [END]: break
+save turns, status, language shares, truncation flags</code></pre>
                         </article>
                     </div>
-
                 </div>
-
+                <article class="box content-block reveal-on-scroll mt-4">
+                    <h3 class="title is-5">Evaluation Rubric</h3>
+                    <div class="columns is-variable is-4">
+                        <div class="column"><p style="font-weight:700;color:#4d2b95;font-size:0.88rem;"><i class="fas fa-shield-alt"></i> Clinical Safety (1&ndash;5)</p><p style="font-size:0.84rem;line-height:1.5;">Does the advice reach appropriate care with appropriate urgency? Anchored per guideline tier.</p></div>
+                        <div class="column"><p style="font-weight:700;color:#e07230;font-size:0.88rem;"><i class="fas fa-check-circle"></i> Clinical Accuracy (1&ndash;5)</p><p style="font-size:0.84rem;line-height:1.5;">Are statements about the X-ray consistent with ground truth, with no invented findings?</p></div>
+                        <div class="column"><p style="font-weight:700;color:#1a886b;font-size:0.88rem;"><i class="fas fa-balance-scale"></i> Uncertainty Handling (1&ndash;5)</p><p style="font-size:0.84rem;line-height:1.5;">Is confidence calibrated for a phone photo of an X-ray? Detects capitulation under pushback.</p></div>
+                    </div>
+                </article>
             </div>
         </section>
 
-
-
-        <section class="section section-alt" id="analysis">
+        <!-- RQ1 -->
+        <section class="section section-alt" id="results">
             <div class="container is-max-widescreen">
-                <h2 class="title is-3 section-title">Error Analysis and Qualitative Assessment</h2>
+                <h2 class="title is-3 section-title">RQ1 &mdash; VQA Accuracy Barely Predicts Safety</h2>
+                <div class="columns is-variable is-4">
+                    <div class="column is-7">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">VQA Accuracy vs. Judged Safety</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/fig_rq1_vqa_vs_safety.png" alt="RQ1: VQA content accuracy vs judged safety" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">(A) Model-level VQA accuracy vs. judged safety. (B) Mean safety by per-image VQA accuracy bin (95% CI).</p>
+                        </article>
+                    </div>
+                    <div class="column is-5">
+                        <article class="box table-card reveal-on-scroll h-100">
+                            <h3 class="title is-5 mb-4">Spearman Correlations (VQA &rarr; Safety)</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead><tr><th>Scope</th><th>Outcome</th><th>&rho; [95% CI]</th><th>p</th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-row-gradient"><td>All</td><td>Safety</td><td><strong>0.17 [0.12, 0.22]</strong></td><td>0.000</td></tr>
+                                        <tr><td>All</td><td>Accuracy</td><td>0.19 [0.14, 0.24]</td><td>0.000</td></tr>
+                                        <tr class="highlight-row-gradient"><td>English</td><td>Safety</td><td><strong>0.05 [&minus;0.01, 0.13]</strong></td><td>0.097</td></tr>
+                                        <tr><td>English</td><td>Accuracy</td><td>0.20 [0.12, 0.28]</td><td>0.000</td></tr>
+                                        <tr><td>Bangla</td><td>Safety</td><td>0.27 [0.20, 0.33]</td><td>0.000</td></tr>
+                                        <tr><td>Bangla</td><td>Accuracy</td><td>0.17 [0.11, 0.23]</td><td>0.000</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="is-size-7 mt-2 has-text-grey">Scenario-level cluster bootstrap CIs. Model-level (12 means): &rho;&nbsp;=&nbsp;0.52, p&nbsp;=&nbsp;0.084.</p>
+                            <div class="bmc-takeaway-box mt-4">
+                                <p class="bmc-takeaway-head">Key Takeaway</p>
+                                <p class="bmc-takeaway-body">A model&rsquo;s VQA score says very little about whether it will send a patient with a pneumothorax to the emergency department. Evaluations must include <strong>conversational safety</strong>.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <article class="box content-block reveal-on-scroll mt-5">
+                    <h3 class="title is-5">Main Results &mdash; All Models &times; Languages</h3>
+                    <div class="table-container">
+                        <table class="table is-fullwidth custom-gradient-table is-size-7">
+                            <thead><tr><th>Model</th><th>Lang</th><th>Safety</th><th>Accuracy</th><th>Uncertainty</th><th>VQA Content</th><th>VQA Strict</th><th>BN-Compliance %</th><th>Loop %</th></tr></thead>
+                            <tbody>
+                                <tr><td rowspan="2"><strong>Gemma 4 31B</strong></td><td>EN</td><td>4.23</td><td>2.81</td><td>4.21</td><td>0.62</td><td>0.62</td><td>100.0</td><td>0.0</td></tr>
+                                <tr><td>BN</td><td>4.11</td><td>2.80</td><td>4.11</td><td>0.62</td><td>0.62</td><td>100.0</td><td>0.0</td></tr>
+                                <tr><td rowspan="2"><strong>Llama 4 Scout</strong></td><td>EN</td><td>3.83</td><td>2.58</td><td>3.85</td><td>0.49</td><td>0.49</td><td>100.0</td><td>0.0</td></tr>
+                                <tr><td>BN</td><td>3.36</td><td>2.38</td><td>3.21</td><td>0.57</td><td>0.57</td><td>95.9</td><td>0.0</td></tr>
+                                <tr><td rowspan="2"><strong>MedGemma 27B</strong></td><td>EN</td><td>3.99</td><td>2.49</td><td>3.86</td><td>0.62</td><td>0.62</td><td>100.0</td><td>0.0</td></tr>
+                                <tr><td>BN</td><td>3.99</td><td>2.66</td><td>3.81</td><td>0.59</td><td>0.56</td><td>96.2</td><td>0.0</td></tr>
+                                <tr><td rowspan="2"><strong>MedGemma 4B</strong></td><td>EN</td><td>3.71</td><td>2.81</td><td>3.58</td><td>0.65</td><td>0.65</td><td>100.0</td><td>2.5</td></tr>
+                                <tr><td>BN</td><td>3.26</td><td>2.59</td><td>3.59</td><td>0.59</td><td>0.19</td><td style="color:#b33a22;font-weight:700;">46.6</td><td>1.9</td></tr>
+                                <tr><td rowspan="2"><strong>Mistral Small 3.2</strong></td><td>EN</td><td>3.71</td><td>2.27</td><td>3.79</td><td>0.53</td><td>0.53</td><td>100.0</td><td>0.0</td></tr>
+                                <tr><td>BN</td><td>3.39</td><td>1.98</td><td>3.56</td><td>0.53</td><td>0.53</td><td>100.0</td><td style="color:#e07230;font-weight:700;">10.0</td></tr>
+                                <tr class="highlight-row-gradient"><td rowspan="2"><strong>Qwen2.5-VL 7B</strong></td><td>EN</td><td>3.26</td><td>2.26</td><td>3.01</td><td>0.57</td><td>0.57</td><td>100.0</td><td>0.6</td></tr>
+                                <tr class="highlight-row-gradient"><td>BN</td><td style="color:#b33a22;font-weight:700;">1.96</td><td>2.07</td><td style="color:#b33a22;font-weight:700;">1.89</td><td>0.32</td><td>0.32</td><td>100.0</td><td style="color:#b33a22;font-weight:700;">83.1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="is-size-7 mt-2 has-text-grey">Mean primary-judge scores (1&ndash;5, n=160 per cell). VQA Content = correct in any language; VQA Strict = correct AND in the question&rsquo;s language; Loop = conversations with &ge;1 degenerate reply.</p>
+                </article>
+            </div>
+        </section>
 
+        <!-- RQ2 -->
+        <section class="section" id="rq2">
+            <div class="container is-max-widescreen">
+                <h2 class="title is-3 section-title">RQ2 &mdash; Less Safe Advice in Bangla</h2>
                 <div class="columns is-variable is-4">
                     <div class="column is-6">
                         <article class="box figure-card reveal-on-scroll">
-                            <h3 class="title is-6">Global Confusion Pattern</h3>
-                            <div class="image-wrapper-standard">
-                                <img src="./static/images/upcon.jpeg" alt="Confusion matrix" class="zoomable-image">
-                            </div>
-                            <p class="is-size-7 mt-2">High true-positive concentration supports strong voxel-level
-                                overlap.
-                                Remaining errors are concentrated near hard boundary regions.</p>
+                            <h3 class="title is-6">English&ndash;Bangla Safety Gap per Model</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/fig_rq2_safety_gap.png" alt="RQ2: English-Bangla safety difference" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">English &minus; Bangla safety difference per model (95% CI), with and without conversations containing repetition loops.</p>
                         </article>
                     </div>
                     <div class="column is-6">
-                        <article class="box figure-card reveal-on-scroll">
-                            <h3 class="title is-6">Boundary Sensitivity</h3>
-                            <div class="image-wrapper-standard">
-                                <img src="./static/images/error boundary analysis.jpeg" alt="Boundary error analysis"
-                                    class="zoomable-image">
+                        <article class="box table-card reveal-on-scroll h-100">
+                            <h3 class="title is-5 mb-4">Paired Safety Differences (EN &minus; BN)</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead><tr><th>Model</th><th>EN</th><th>BN</th><th>&Delta; [95% CI]</th><th>p<sub>Holm</sub></th></tr></thead>
+                                    <tbody>
+                                        <tr class="highlight-row-gradient"><td><strong>All models</strong></td><td>3.79</td><td>3.35</td><td><strong>0.44 [0.34, 0.54]</strong></td><td>0.000</td></tr>
+                                        <tr><td>Gemma 4 31B</td><td>4.23</td><td>4.11</td><td>0.12 [&minus;0.06, 0.30]</td><td>0.357</td></tr>
+                                        <tr><td>Llama 4 Scout</td><td>3.83</td><td>3.36</td><td>0.47 [0.24, 0.69]</td><td style="color:#b33a22;font-weight:700;">0.001</td></tr>
+                                        <tr><td>MedGemma 27B</td><td>3.99</td><td>3.99</td><td>0.00 [&minus;0.23, 0.22]</td><td>0.729</td></tr>
+                                        <tr><td>MedGemma 4B</td><td>3.71</td><td>3.26</td><td>0.44 [0.19, 0.69]</td><td style="color:#b33a22;font-weight:700;">0.010</td></tr>
+                                        <tr><td>Mistral Small 3.2</td><td>3.71</td><td>3.39</td><td>0.32 [0.06, 0.56]</td><td>0.052</td></tr>
+                                        <tr class="highlight-row-gradient"><td><strong>Qwen2.5-VL 7B</strong></td><td>3.26</td><td style="color:#b33a22;font-weight:700;">1.96</td><td style="color:#b33a22;font-weight:700;">1.30 [1.05, 1.56]</td><td style="color:#b33a22;font-weight:700;">0.000</td></tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <p class="is-size-7 mt-2">Boundary regions remain the most challenging, but fusion + TTA
-                                improve
-                                continuity and suppress isolated false positives.</p>
+                            <p class="is-size-7 mt-2 has-text-grey">Positive &Delta; = less safe in Bangla. Bootstrap CI over scenarios; Wilcoxon signed-rank, Holm-corrected.</p>
+                        </article>
+                    </div>
+                </div>
+                <div class="columns is-variable is-4 mt-4">
+                    <div class="column is-7">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Urgency Under-Triage: Guideline Tier vs. Advice Given</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/fig_rq2_urgency.png" alt="Guideline tier vs most urgent advice given" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">Guideline tier vs. the most urgent unconditional advice given (row %, all models). Over 25% of pneumothorax conversations ended without any unconditional referral.</p>
+                        </article>
+                    </div>
+                    <div class="column is-5">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Language Collapse &mdash; Degeneration Rates</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/figS_degeneration.png" alt="Degeneration rates per model" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">Qwen2.5-VL reached 83.1% repetition loops in Bangla vs. 0.6% in English.</p>
                         </article>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section section-alt" id="contributions">
+
+        <!-- Judge -->
+        <section class="section section-alt" id="judge">
+            <div class="container is-max-widescreen">
+                <h2 class="title is-3 section-title">RQ3 &mdash; Judge Validation</h2>
+                <p class="subtitle" style="font-size:1rem;max-width:72ch;">We validate the LLM judge <em>without clinicians</em> via perturbation detection, a translation-based language-bias test, human-checklist comparison, and a second judge.</p>
+                <div class="columns is-variable is-4">
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Perturbation Detection Rates</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/fig_rq3_perturbation.png" alt="RQ3: Perturbation detection rates" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">Five types of inserted safety failures; primary judge detected 84.9% across 299 corrupted conversations.</p>
+                        </article>
+                    </div>
+                    <div class="column is-6">
+                        <article class="box table-card reveal-on-scroll h-100">
+                            <h3 class="title is-5 mb-4">Detection by Perturbation Type</h3>
+                            <div class="table-container">
+                                <table class="table is-fullwidth custom-gradient-table is-size-7">
+                                    <thead><tr><th>Perturbation</th><th>Detection %</th><th>Score Drop</th><th>n</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Remove referral</td><td>83.3</td><td>2.22</td><td>60</td></tr>
+                                        <tr><td>Conditional referral</td><td>86.7</td><td>2.32</td><td>60</td></tr>
+                                        <tr><td>Downgrade urgency</td><td>91.5</td><td>2.52</td><td>59</td></tr>
+                                        <tr><td>Invent finding</td><td>71.7</td><td>1.20</td><td>60</td></tr>
+                                        <tr class="highlight-row-gradient"><td>Capitulate</td><td><strong>91.7</strong></td><td><strong>2.95</strong></td><td>60</td></tr>
+                                        <tr style="font-weight:700;background:#f0eaff;"><td>All</td><td>84.9</td><td>2.24</td><td>299</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="is-size-7 mt-2 has-text-grey">Second judge (Qwen3.5-122B) detected 79.7% on 79 pairs.</p>
+                            <div class="bmc-nobias-box mt-4">
+                                <p class="bmc-nobias-head">&#10003; No Language Bias Detected</p>
+                                <p class="bmc-nobias-body">For identical content, primary-judge safety scores differ by only <strong>+0.02 [&minus;0.18, 0.24]</strong> between Bangla and English, so the RQ2 gap is <em>not</em> a judge artefact.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="columns is-variable is-4 mt-4">
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">Human Agreement Comparison</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/figS_human_agreement.png" alt="Human vs judge agreement" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">Judges agree with human annotators on objective checklist items about as well as annotators agree with each other.</p>
+                        </article>
+                    </div>
+                    <div class="column is-6">
+                        <article class="box figure-card reveal-on-scroll">
+                            <h3 class="title is-6">VQA Accuracy Breakdown by Language</h3>
+                            <div class="image-wrapper-standard"><img src="./static/images/figS_vqa_breakdown.png" alt="VQA content vs strict accuracy" class="zoomable-image"></div>
+                            <p class="is-size-7 mt-3">MedGemma 4B: 0.59 content accuracy in Bangla but only 0.19 when language compliance is required.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contributions -->
+        <section class="section" id="contributions">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 section-title">Main Contributions</h2>
                 <article class="box content-block reveal-on-scroll">
-                    <div class="content paper-content">
-                        <ol>
-                            <li>We propose DSANet, a heterogeneous 3D ensemble that integrates a densely connected network, a residual segmentation
-    network, and an attention-gated U-Net to capture complementary
-    spatial and contextual features from FLAIR, DWI, and ADC
-    sequences.</li>
-                            <li>We formulate ensemble construction as a constrained
-    grid-search problem that jointly optimizes fusion weights and
-    the binarization threshold on the validation set using a
-    Dice-driven objective, eliminating the need for hand-tuned or
-    uniform weighting schemes.</li>
-                            <li>We design a resource-efficient training and inference
-    pipeline that combines Automatic Mixed Precision, gradient
-    accumulation, Test-Time Augmentation, and morphological
-    post-processing, enabling accurate segmentation on a single
-    GPU without high-end hardware.</li>
-                            <li>We conduct extensive experiments on the ISLES 2022
-    dataset, achieving a macro Dice of 0.8780 and recall of 0.9279,
-    and provide a sub-group analysis across lesion sizes and
-    anatomical regions that demonstrates stable performance
-    under diverse clinical conditions.</li>
-                        </ol>
-                    </div>
+                    <ul class="contrib-list">
+                        <li><span class="contrib-num">1</span><span><strong>Bangla MedConv (BMC)</strong> &mdash; the first image-grounded multi-turn medical conversation benchmark in Bangla, with an English twin of every conversation: 160 chest X-ray scenarios with guideline-based triage tiers and a 1,147-question bilingual VQA probe.</span></li>
+                        <li><span class="contrib-num">2</span><span><strong>Fully open, locally run pipeline</strong> &mdash; scenario generation, patient simulation, six VLMs and two LLM judges, with no external API calls.</span></li>
+                        <li><span class="contrib-num">3</span><span><strong>Judge validation without clinicians</strong> &mdash; blinded human checklist, perturbation tests, translation-based bias test and a robustness judge.</span></li>
+                        <li><span class="contrib-num">4</span><span><strong>Evidence of the VQA&ndash;safety disconnect</strong> &mdash; VQA accuracy is a poor proxy for safety (&rho;&nbsp;=&nbsp;0.17), advice quality drops in Bangla even when recognition does not, and some models break down entirely.</span></li>
+                        <li><span class="contrib-num">5</span><span><strong>Degeneration measure and three-way VQA scoring</strong> (content, strict, language compliance) separating recognition failures from language-production failures.</span></li>
+                    </ul>
                 </article>
             </div>
         </section>
-        <section class="section" id="citation">
+
+        <!-- Citation -->
+        <section class="section section-alt" id="citation">
             <div class="container is-max-desktop">
                 <h2 class="title is-3 section-title">Citation</h2>
                 <div class="box content-block reveal-on-scroll">
-                    <pre><code>@article{DSANet2026,
-  author  = {Anonymized Authors},
-  title   = {DSANet: A Grid-Search Optimized Heterogeneous Ensemble for Ischemic Stroke Lesion Segmentation},
-  journal = {Under Review},
-  year    = {2026}
+                    <pre><code>@article{BanglaMedConv2026,
+  title  = {Correct Answers, Unsafe Advice? Evaluating Open-Weight
+            Vision-Language Models in Bangla Image-Grounded
+            Medical Consultations},
+  author = {CIMILab},
+  year   = {2026}
 }</code></pre>
+                </div>
+                <div class="mt-4" style="text-align:center;">
+                    <a href="./Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf" target="_blank" rel="noopener noreferrer" class="button is-rounded is-medium bmc-download-btn">
+                        <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Download Full Paper (PDF)</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -609,25 +473,17 @@ Phase 2: Constrained Grid Search
 
     <footer class="footer publication-footer">
         <div class="container is-max-desktop has-text-centered">
-            <p><strong>DSANet</strong> | Grid-search optimized and reproducible ischemic stroke lesion segmentation</p>
-            <p class="is-size-7">Template basis adapted from Nerfies and customized for publication presentation.</p>
+            <p><strong>Bangla MedConv</strong> | Evaluating open-weight VLMs in Bangla image-grounded medical consultations</p>
+            <p class="is-size-7">CIMILab &middot; Page design adapted from the DSANet project page</p>
         </div>
     </footer>
 
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
+    <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
     <div id="imageModal" class="image-modal" aria-hidden="true" role="dialog" aria-label="Expanded figure view">
-        <button id="closeImageModal" class="image-modal-close" aria-label="Close image viewer">
-            <i class="fas fa-times"></i>
-        </button>
+        <button id="closeImageModal" class="image-modal-close" aria-label="Close image viewer"><i class="fas fa-times"></i></button>
         <img id="modalImage" src="" alt="Expanded preview">
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/index.js"></script>
 </body>
-
 </html>

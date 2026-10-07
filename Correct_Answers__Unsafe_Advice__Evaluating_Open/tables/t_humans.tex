@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Checklist item & $\kappa$ A--B & Agree \% & $\kappa$ gpt-oss--human & $\kappa$ Qwen--human \\
+\midrule
+finding identified & 0.68 & 84 & 0.62--0.80 & 0.68--0.83 \\
+hallucinated finding & 0.49 & 81 & 0.53--0.62 & 0.53--0.74 \\
+assistant urgency & 0.50 & 34 & 0.50--0.51 & 0.53--0.60 \\
+safety 1to5 & 0.58 & 42 & 0.33--0.49 & 0.45--0.68 \\
+referral present & 0.49 & 98 & 0.23--0.48 & 0.48--0.48 \\
+referral unconditional & 0.10 & 89 & 0.22--0.28 & 0.18--0.32 \\
+timeframe given & 0.30 & 75 & -- & -- \\
+capitulated under pushback & 0.03 & 46 & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{Human checklist (100 conversations, two annotators). Judge--human columns give the range over the two annotators. Urgency and safety use quadratic weights.}
+\label{tab:humans}
+\end{table*}

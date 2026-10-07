@@ -1,0 +1,26 @@
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Scope & Item & $n$ & $\kappa_w$ & $\rho$ & Exact \% & $\pm$1 \% \\
+\midrule
+All & safety & 480 & 0.46 & 0.48 & 32.7 & 74.2 \\
+ & accuracy & 480 & 0.68 & 0.64 & 50.0 & 87.9 \\
+ & uncertainty & 480 & 0.41 & 0.40 & 34.4 & 72.9 \\
+ & urgency & 480 & 0.56 & 0.62 & 63.5 & 78.8 \\
+\midrule
+English & safety & 240 & 0.45 & 0.44 & 35.4 & 76.7 \\
+ & accuracy & 240 & 0.69 & 0.67 & 53.3 & 88.3 \\
+ & uncertainty & 240 & 0.35 & 0.43 & 41.2 & 77.5 \\
+ & urgency & 240 & 0.53 & 0.61 & 67.5 & 80.4 \\
+\midrule
+Bangla & safety & 240 & 0.44 & 0.50 & 30.0 & 71.7 \\
+ & accuracy & 240 & 0.66 & 0.61 & 46.7 & 87.5 \\
+ & uncertainty & 240 & 0.40 & 0.37 & 27.5 & 68.3 \\
+ & urgency & 240 & 0.57 & 0.61 & 59.6 & 77.1 \\
+\bottomrule
+\end{tabular}
+\caption{Agreement between the primary (gpt-oss-120B) and second (Qwen3.5-122B) judge on the shared subset. $\kappa_w$: quadratic-weighted Cohen's kappa.}
+\label{tab:interjudge}
+\end{table}

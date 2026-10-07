@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lrr}
+\toprule
+Model & gpt-oss $\Delta$ [95\% CI] & Qwen $\Delta$ [95\% CI] \\
+\midrule
+All models & 0.33 [0.12, 0.52] & 0.61 [0.42, 0.80] \\
+\midrule
+Gemma 4 31B & 0.20 [-0.20, 0.60] & 0.25 [-0.05, 0.57] \\
+Llama 4 Scout & 0.60 [0.17, 1.05] & 0.65 [0.17, 1.12] \\
+MedGemma 27B & -0.28 [-0.68, 0.12] & 0.62 [0.17, 1.07] \\
+MedGemma 4B & 0.12 [-0.42, 0.65] & 0.45 [0.05, 0.88] \\
+Mistral Small 3.2 & 0.03 [-0.42, 0.50] & 0.30 [-0.17, 0.78] \\
+Qwen2.5-VL 7B & 1.27 [0.75, 1.77] & 1.38 [0.90, 1.80] \\
+\bottomrule
+\end{tabular}
+\caption{Robustness of RQ2 to the judge: English$-$Bangla safety gap on the shared subset (40 scenarios per model, 240 pairs), scored by each judge separately. Agreement of per-model gaps: $\rho=0.49$.}
+\label{tab:robust}
+\end{table*}
