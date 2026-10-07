@@ -196,3 +196,178 @@ details.bmc-acc p { font-size: .86rem; line-height: 1.65; color: #3a3a5c; margin
     .probe-row { grid-template-columns: 80px 1fr 60px; }
     .chat-msg { max-width: 100%; }
 }
+
+/* ── Results Quick Jump Nav ── */
+.results-quick-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid #e2e8f0;
+}
+.quick-nav-pill {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.quick-nav-pill:hover {
+    color: var(--bmc-purple);
+    border-color: var(--bmc-purple);
+    background: #f5f3ff;
+    transform: translateY(-1px);
+}
+.quick-nav-pill.active-pill {
+    background: var(--bmc-purple);
+    color: #ffffff;
+    border-color: var(--bmc-purple);
+}
+
+/* ── Interactive Model Arena Comparator ── */
+.arena-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem 1.6rem;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+.arena-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #0ea5e9, #10b981);
+}
+.arena-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 1rem;
+}
+.arena-badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 0.35rem;
+}
+.arena-grid {
+    margin-top: 0.5rem;
+}
+.arena-model-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.panel-a { border-left: 4px solid #4f46e5; }
+.panel-b { border-left: 4px solid #0ea5e9; }
+.arena-selector-wrap {
+    margin-bottom: 1.2rem;
+}
+.arena-select-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #475569;
+    margin-bottom: 0.35rem;
+}
+.arena-select {
+    font-weight: 600;
+    border-radius: 8px;
+    border-color: #cbd5e1;
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+}
+.arena-metric-row {
+    margin-bottom: 0.85rem;
+}
+.arena-metric-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.78rem;
+    margin-bottom: 0.25rem;
+}
+.arena-metric-label {
+    font-weight: 600;
+    color: #334155;
+}
+.arena-metric-val {
+    font-weight: 700;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+}
+.arena-metric-bar {
+    height: 9px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+.arena-metric-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+}
+.fill-green { background: #10b981; }
+.fill-blue  { background: #0ea5e9; }
+.fill-amber { background: #f59e0b; }
+.fill-red   { background: #ef4444; }
+.fill-purple{ background: #8b5cf6; }
+
+.arena-verdict {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px dashed #cbd5e1;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #475569;
+}
+.arena-verdict strong {
+    color: #0f172a;
+}
+.arena-takeaway-bar {
+    margin-top: 1.25rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    padding: 0.85rem 1.15rem;
+    font-size: 0.85rem;
+    color: #166534;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.arena-takeaway-bar.alert {
+    background: #fff1f2;
+    border-color: #fecdd3;
+    color: #9f1239;
+}

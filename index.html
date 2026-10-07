@@ -39,8 +39,7 @@
                 <div id="mainNavbar" class="navbar-menu">
                     <div class="navbar-end">
                         <a class="navbar-item" href="#overview">Overview</a>
-                        <a class="navbar-item" href="#dataset">Dataset</a>
-                        <a class="navbar-item" href="#method">Method</a>
+                        <a class="navbar-item" href="#dataset">Dataset &amp; Method</a>
                         <a class="navbar-item" href="#results">Results &amp; Safety Gap</a>
                         <a class="navbar-item" href="#judge">Judge Validation</a>
                         <a class="navbar-item" href="#conversations">Conversations</a>
@@ -918,8 +917,80 @@ save turns, status, language shares, truncation flags</code></pre>
         <!-- Main results + RQ1 -->
         <section class="section" id="results">
             <div class="container is-max-widescreen">
-                <h2 class="title is-3 section-title">Main Results</h2>
-                <article class="box content-block reveal-on-scroll">
+                <h2 class="title is-3 section-title">Main Results &amp; Safety Gap</h2>
+                
+                <!-- Quick jump bar for Results facets -->
+                <div class="results-quick-nav mb-5">
+                    <a href="#model-arena" class="quick-nav-pill active-pill"><i class="fas fa-balance-scale"></i> Model Arena</a>
+                    <a href="#table1-card" class="quick-nav-pill"><i class="fas fa-table"></i> Table 1: All Models</a>
+                    <a href="#rq1-container" class="quick-nav-pill"><i class="fas fa-chart-line"></i> RQ1: VQA vs Safety</a>
+                    <a href="#rq2" class="quick-nav-pill"><i class="fas fa-language"></i> RQ2: Bangla Gap</a>
+                    <a href="#urgency" class="quick-nav-pill"><i class="fas fa-ambulance"></i> Urgency Under-Triage</a>
+                </div>
+
+                <!-- Interactive Model Arena Comparator -->
+                <article class="box content-block reveal-on-scroll arena-card mb-6" id="model-arena">
+                    <div class="arena-header">
+                        <div class="arena-header-text">
+                            <span class="fig-badge arena-badge"><i class="fas fa-sliders-h"></i> Interactive Tool</span>
+                            <h3 class="title is-4 mb-1">Model Head-to-Head Arena &amp; Safety Comparator</h3>
+                            <p class="subtitle is-6 has-text-grey mb-3">
+                                Select any two models to compare clinical safety scores, diagnostic VQA accuracy, uncertainty handling, under-triage risks, and repetition degeneration in Bangla vs. English.
+                            </p>
+                        </div>
+                        <div class="arena-lang-selector">
+                            <div class="bmc-tabs" style="margin:0;">
+                                <span class="switch-label">Language:</span>
+                                <button class="bmc-tab-btn active" data-arena-lang="bn">Bangla (BN)</button>
+                                <button class="bmc-tab-btn" data-arena-lang="en">English (EN)</button>
+                                <button class="bmc-tab-btn" data-arena-lang="delta">EN &minus; BN Gap (&Delta;)</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns is-variable is-4 arena-grid">
+                        <div class="column is-6">
+                            <div class="arena-model-panel panel-a">
+                                <div class="arena-selector-wrap">
+                                    <label for="arenaModelA" class="arena-select-label"><i class="fas fa-robot"></i> Model A</label>
+                                    <div class="select is-fullwidth">
+                                        <select id="arenaModelA" class="arena-select">
+                                            <option value="gemma-31b" selected>Gemma 4 31B (Google)</option>
+                                            <option value="llama-scout">Llama 4 Scout (Meta)</option>
+                                            <option value="medgemma-27b">MedGemma 27B (Google Health)</option>
+                                            <option value="medgemma-4b">MedGemma 4B (Google Health)</option>
+                                            <option value="mistral-small">Mistral Small 3.2 (Mistral)</option>
+                                            <option value="qwen25-vl">Qwen2.5-VL 7B (Alibaba)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="arenaMetricsA" class="arena-metrics"></div>
+                                <div id="arenaVerdictA" class="arena-verdict"></div>
+                            </div>
+                        </div>
+                        <div class="column is-6">
+                            <div class="arena-model-panel panel-b">
+                                <div class="arena-selector-wrap">
+                                    <label for="arenaModelB" class="arena-select-label"><i class="fas fa-robot"></i> Model B</label>
+                                    <div class="select is-fullwidth">
+                                        <select id="arenaModelB" class="arena-select">
+                                            <option value="gemma-31b">Gemma 4 31B (Google)</option>
+                                            <option value="llama-scout">Llama 4 Scout (Meta)</option>
+                                            <option value="medgemma-27b">MedGemma 27B (Google Health)</option>
+                                            <option value="medgemma-4b">MedGemma 4B (Google Health)</option>
+                                            <option value="mistral-small">Mistral Small 3.2 (Mistral)</option>
+                                            <option value="qwen25-vl" selected>Qwen2.5-VL 7B (Alibaba)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="arenaMetricsB" class="arena-metrics"></div>
+                                <div id="arenaVerdictB" class="arena-verdict"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arena-takeaway-bar" id="arenaTakeaway"></div>
+                </article>
+
+                <article class="box content-block reveal-on-scroll" id="table1-card">
                     <span class="fig-badge tbl">Table 1</span>
                     <h3 class="title is-5">Main Results per Model and Language</h3>
                     <div class="search-row">
@@ -1094,7 +1165,7 @@ save turns, status, language shares, truncation flags</code></pre>
                         with at least one degenerate (repetition-loop) reply (strict definition).</p>
                 </article>
 
-                <h2 class="title is-3 section-title" style="margin-top:3rem;">RQ1 &mdash; VQA Accuracy Barely Predicts
+                <h2 class="title is-3 section-title" id="rq1-container" style="margin-top:3rem;">RQ1 &mdash; VQA Accuracy Barely Predicts
                     Safety</h2>
                 <div class="columns is-variable is-4">
                     <div class="column is-7">
