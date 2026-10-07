@@ -1,12 +1,14 @@
 # Bangla MedConv (BMC)
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](./Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf)
+[![Project Page](https://img.shields.io/badge/Project%20Page-pronad1.github.io-brightgreen.svg)](https://pronad1.github.io/Project_website_Templete/)
 [![Benchmark](https://img.shields.io/badge/Benchmark-1%2C920%20Consultations-blue.svg)](#benchmark-overview)
 [![License](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
 [![Lab](https://img.shields.io/badge/Lab-CIMILab-indigo.svg)](https://github.com/CIMILab)
 
 > **Correct Answers, Unsafe Advice? Evaluating Open-Weight Vision-Language Models in Bangla Image-Grounded Medical Consultations**  
 > *Computation Informatics and Machine Intelligence Lab (CIMILab), University of Missouri, Columbia, USA*
+
+- 🌐 **Project Webpage:** [https://pronad1.github.io/Project_website_Templete/](https://pronad1.github.io/Project_website_Templete/)
 
 ---
 
@@ -45,8 +47,6 @@ Evaluating six open-weight vision-language models (**Gemma 4 31B**, **Llama 4 Sc
 │       ├── fig_rq2_urgency.png                                   # Figure 4: Triage under-triage confusion
 │       ├── fig_rq3_perturbation.png                              # Figure 5: Deliberate failure detection
 │       └── figS_*.png                                            # Figures S1-S7: Supplementary analyses
-├── Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf    # Full conference paper PDF
-├── appendix.pdf                                                  # Full appendix document
 └── README.md                                                     # Project documentation
 ```
 
@@ -77,10 +77,10 @@ If you find this work, benchmark, or code useful, please cite our paper:
 ```bibtex
 @article{BanglaMedConv2026,
   title   = {Correct Answers, Unsafe Advice? Evaluating Open-Weight Vision-Language Models in Bangla Image-Grounded Medical Consultations},
-  author  = {Pronad Roy and Md. Ashiqur Rahman and CIMILab Team},
+  author  = {#},
   journal = {arXiv preprint},
   year    = {2026},
-  url     = {https://github.com/CIMILab}
+  url     = {#}
 }
 ```
 
