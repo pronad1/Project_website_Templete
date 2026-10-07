@@ -14,6 +14,15 @@ window.HELP_IMPROVE_VIDEOJS = false;
             menu.classList.toggle('is-active');
             burger.setAttribute('aria-expanded', burger.classList.contains('is-active') ? 'true' : 'false');
         });
+
+        var navLinks = menu.querySelectorAll('.navbar-item');
+        Array.prototype.forEach.call(navLinks, function (link) {
+            link.addEventListener('click', function () {
+                burger.classList.remove('is-active');
+                menu.classList.remove('is-active');
+                burger.setAttribute('aria-expanded', 'false');
+            });
+        });
     }
 
     function setupCountUp() {
@@ -27,17 +36,21 @@ window.HELP_IMPROVE_VIDEOJS = false;
         function animateCounter(el, target) {
             var duration = 1100;
             var startTime = null;
+            var targetStr = el.getAttribute('data-countup') || '';
+            var decimals = (targetStr.indexOf('.') !== -1) ? targetStr.split('.')[1].length : 0;
 
             function step(timestamp) {
                 if (!startTime) {
                     startTime = timestamp;
                 }
                 var progress = Math.min((timestamp - startTime) / duration, 1);
-                var value = (target * progress).toFixed(4);
+                var value = (target * progress).toFixed(decimals);
                 el.textContent = value;
 
                 if (progress < 1) {
                     requestAnimationFrame(step);
+                } else {
+                    el.textContent = target.toFixed(decimals);
                 }
             }
 

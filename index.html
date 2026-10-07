@@ -14,7 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;family=Noto+Sans+Bengali:wght@400;600;700&amp;display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link rel="stylesheet" href="./static/css/index.css">
     <link rel="stylesheet" href="./static/css/bmc.css">
@@ -51,38 +51,51 @@
 
         <section class="hero publication-hero">
             <div class="hero-body">
-                <div class="container is-max-desktop">
+                <div class="container is-max-widescreen">
                     <div class="columns is-vcentered">
                         <div class="column is-7-desktop">
-                            <span class="eyebrow">NLP for Medical AI &middot; Bangla</span>
+                            <span class="eyebrow"><i class="fas fa-stethoscope"></i> NLP for Medical AI &middot;
+                                Multimodal Clinical Safety</span>
                             <h1 class="title is-1 publication-title">
                                 Correct Answers, Unsafe Advice?<br>
                                 Evaluating Open-Weight VLMs in<br>
                                 Bangla Medical Consultations
                             </h1>
-                            <p class="subtitle publication-subtitle">
+
+                            <p class="subtitle publication-subtitle mb-4">
                                 A first benchmark of image-grounded, multi-turn medical conversations in
-                                <strong>Bangla &amp; English</strong> &mdash; VQA accuracy barely predicts safety,
+                                <strong>Bangla &amp; English</strong> &mdash; VQA accuracy barely predicts clinical
+                                safety (&rho; = 0.17),
                                 and identical patients receive less safe advice in Bangla.
                             </p>
-                            <div class="tags publication-tags">
-                                <span class="tag is-medium">Bangla MedConv</span>
-                                <span class="tag is-medium">1,920 Conversations</span>
-                                <span class="tag is-medium">6 Open-Weight VLMs</span>
-                                <span class="tag is-medium">Chest X-Ray Safety</span>
-                            </div>
-                            <div class="publication-links">
+                            <div class="publication-links mb-4">
                                 <a href="#" target="_blank" rel="noopener noreferrer"
                                     class="button is-rounded bmc-pdf-btn">
                                     <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
                                 </a>
-                                <a href="https://github.com/CIMILab" target="_blank" rel="noopener noreferrer"
-                                    class="button is-dark is-rounded">
-                                    <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="fab fa-github"></i></span><span>Code (GitHub)</span>
                                 </a>
                                 <a href="#dataset" class="button is-dark is-rounded">
-                                    <span class="icon"><i class="fas fa-database"></i></span><span>Dataset</span>
+                                    <span class="icon"><i class="fas fa-database"></i></span><span>Dataset &amp;
+                                        Tiers</span>
                                 </a>
+                                <a href="#model-arena" class="button is-primary is-rounded" style="background:#4f46e5;">
+                                    <span class="icon"><i class="fas fa-balance-scale"></i></span><span>Model
+                                        Arena</span>
+                                </a>
+                                <a href="#conversations" class="button is-dark is-rounded">
+                                    <span class="icon"><i class="fas fa-comments"></i></span><span>Demo Cases</span>
+                                </a>
+                            </div>
+                            <div class="tags publication-tags">
+                                <span class="tag is-rounded"><i class="fas fa-tag mr-1"></i> Bangla MedConv</span>
+                                <span class="tag is-rounded"><i class="fas fa-comment-medical mr-1"></i> 1,920
+                                    Consultations</span>
+                                <span class="tag is-rounded"><i class="fas fa-robot mr-1"></i> 6 Open-Weight VLMs</span>
+                                <span class="tag is-rounded"><i class="fas fa-x-ray mr-1"></i> NIH ChestX-ray14</span>
+                                <span class="tag is-rounded"><i class="fas fa-gavel mr-1"></i> Dual-Judge
+                                    Evaluation</span>
                             </div>
                         </div>
                         <div class="column is-5-desktop">
@@ -185,22 +198,28 @@
                 <div class="box content-block reveal-on-scroll mb-5">
                     <h2 class="title is-3 section-title">Abstract</h2>
                     <div class="content paper-content">
-                        <p>Vision-language models (VLMs) for medicine are usually evaluated with single-turn visual question
+                        <p>Vision-language models (VLMs) for medicine are usually evaluated with single-turn visual
+                            question
                             answering (VQA), and medical AI in Bangla &mdash; a language with over <strong>250 million
                                 speakers</strong> &mdash; has been evaluated only this way. We ask whether <em>correct
                                 answers imply safe advice</em>. We present <strong>Bangla MedConv (BMC)</strong>, a
                             benchmark of <strong>160 chest X-ray scenarios</strong> with guideline-based urgency ground
-                            truth, in which a simulated patient or relative converses with six open-weight VLMs in paired
-                            English and Bangla runs (<strong>1,920 conversations</strong>, all run locally). A primary LLM
+                            truth, in which a simulated patient or relative converses with six open-weight VLMs in
+                            paired
+                            English and Bangla runs (<strong>1,920 conversations</strong>, all run locally). A primary
+                            LLM
                             judge, validated against two human annotators, deliberately corrupted conversations, and a
                             translation-based bias test scores clinical safety, accuracy and uncertainty handling; a
                             1,147-question bilingual VQA probe measures recognition.</p>
                         <p>Three findings emerge: <strong>(1) VQA accuracy barely predicts safety</strong> (per-image
                             &rho;&nbsp;=&nbsp;0.17; &rho;&nbsp;=&nbsp;0.05 in English). <strong>(2) The same patient
-                                receives less safe advice in Bangla</strong>: safety drops 0.44 points on a 5-point scale
+                                receives less safe advice in Bangla</strong>: safety drops 0.44 points on a 5-point
+                            scale
                             (95% CI 0.34&ndash;0.54), significantly for four of six models; two models collapse into
-                            repetition loops in Bangla (83% and 10% vs. &le;0.6% in English). <strong>(3) The judge caught
-                                85% of inserted safety failures</strong> and showed no language bias. More than a quarter of
+                            repetition loops in Bangla (83% and 10% vs. &le;0.6% in English). <strong>(3) The judge
+                                caught
+                                85% of inserted safety failures</strong> and showed no language bias. More than a
+                            quarter of
                             pneumothorax conversations ended without any unconditional referral.</p>
                     </div>
                     <h3 class="title is-5" style="margin-top:1.5rem;">Research Questions</h3>
@@ -225,7 +244,8 @@
                             <div class="rq-card rq-3">
                                 <p class="rq-num">RQ3</p>
                                 <p class="rq-head">Judge Reliability</p>
-                                <p class="rq-body">Is an open-weight LLM judge reliable, and is it biased by language?</p>
+                                <p class="rq-body">Is an open-weight LLM judge reliable, and is it biased by language?
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -918,12 +938,14 @@ save turns, status, language shares, truncation flags</code></pre>
         <section class="section" id="results">
             <div class="container is-max-widescreen">
                 <h2 class="title is-3 section-title">Main Results &amp; Safety Gap</h2>
-                
+
                 <!-- Quick jump bar for Results facets -->
                 <div class="results-quick-nav mb-5">
-                    <a href="#model-arena" class="quick-nav-pill active-pill"><i class="fas fa-balance-scale"></i> Model Arena</a>
+                    <a href="#model-arena" class="quick-nav-pill active-pill"><i class="fas fa-balance-scale"></i> Model
+                        Arena</a>
                     <a href="#table1-card" class="quick-nav-pill"><i class="fas fa-table"></i> Table 1: All Models</a>
-                    <a href="#rq1-container" class="quick-nav-pill"><i class="fas fa-chart-line"></i> RQ1: VQA vs Safety</a>
+                    <a href="#rq1-container" class="quick-nav-pill"><i class="fas fa-chart-line"></i> RQ1: VQA vs
+                        Safety</a>
                     <a href="#rq2" class="quick-nav-pill"><i class="fas fa-language"></i> RQ2: Bangla Gap</a>
                     <a href="#urgency" class="quick-nav-pill"><i class="fas fa-ambulance"></i> Urgency Under-Triage</a>
                 </div>
@@ -933,9 +955,11 @@ save turns, status, language shares, truncation flags</code></pre>
                     <div class="arena-header">
                         <div class="arena-header-text">
                             <span class="fig-badge arena-badge"><i class="fas fa-sliders-h"></i> Interactive Tool</span>
-                            <h3 class="title is-4 mb-1">Model Head-to-Head Arena &amp; Safety Comparator</h3>
-                            <p class="subtitle is-6 has-text-grey mb-3">
-                                Select any two models to compare clinical safety scores, diagnostic VQA accuracy, uncertainty handling, under-triage risks, and repetition degeneration in Bangla vs. English.
+                            <h3 class="arena-title">Model Head-to-Head Arena &amp; Safety Comparator</h3>
+                            <p class="arena-desc">
+                                Select any two models to compare clinical safety scores, diagnostic VQA accuracy,
+                                uncertainty handling, under-triage risks, and repetition degeneration in Bangla vs.
+                                English.
                             </p>
                         </div>
                         <div class="arena-lang-selector">
@@ -951,7 +975,8 @@ save turns, status, language shares, truncation flags</code></pre>
                         <div class="column is-6">
                             <div class="arena-model-panel panel-a">
                                 <div class="arena-selector-wrap">
-                                    <label for="arenaModelA" class="arena-select-label"><i class="fas fa-robot"></i> Model A</label>
+                                    <label for="arenaModelA" class="arena-select-label"><i class="fas fa-robot"></i>
+                                        Model A</label>
                                     <div class="select is-fullwidth">
                                         <select id="arenaModelA" class="arena-select">
                                             <option value="gemma-31b" selected>Gemma 4 31B (Google)</option>
@@ -970,7 +995,8 @@ save turns, status, language shares, truncation flags</code></pre>
                         <div class="column is-6">
                             <div class="arena-model-panel panel-b">
                                 <div class="arena-selector-wrap">
-                                    <label for="arenaModelB" class="arena-select-label"><i class="fas fa-robot"></i> Model B</label>
+                                    <label for="arenaModelB" class="arena-select-label"><i class="fas fa-robot"></i>
+                                        Model B</label>
                                     <div class="select is-fullwidth">
                                         <select id="arenaModelB" class="arena-select">
                                             <option value="gemma-31b">Gemma 4 31B (Google)</option>
@@ -1165,7 +1191,8 @@ save turns, status, language shares, truncation flags</code></pre>
                         with at least one degenerate (repetition-loop) reply (strict definition).</p>
                 </article>
 
-                <h2 class="title is-3 section-title" id="rq1-container" style="margin-top:3rem;">RQ1 &mdash; VQA Accuracy Barely Predicts
+                <h2 class="title is-3 section-title" id="rq1-container" style="margin-top:3rem;">RQ1 &mdash; VQA
+                    Accuracy Barely Predicts
                     Safety</h2>
                 <div class="columns is-variable is-4">
                     <div class="column is-7">
@@ -3448,81 +3475,96 @@ save turns, status, language shares, truncation flags</code></pre>
             </div>
         </section>
 
-        <!-- Limitations & Ethics -->
-        <section class="section section-alt" id="limitations">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 section-title">Limitations &amp; Ethics</h2>
-                <details class="bmc-acc reveal-on-scroll" open>
-                    <summary>Limitations</summary>
-                    <p>Safety judged by LLMs is not a clinical safety certificate, and no clinician reviewed the
-                        conversations; human annotators were trained team members, not physicians. NIH labels were
-                        text-mined from reports and may contain errors; severity is unknown, and urgency tiers for three
-                        findings follow a team rule. Many images come from hospitalised patients; comparisons between
-                        findings partly reflect care setting (all pneumothorax cases are inpatient), although RQ1 and
-                        RQ2 compare within scenarios. Patients are simulated; real patients are more varied. The second
-                        judge is also the simulator and shares a family with one evaluated model; it scored only a
-                        subset. Two checklist items had low inter-annotator agreement. Translations for the bias test
-                        and the remove-referral perturbations were model-generated and spot-checked rather than
-                        exhaustively verified. The study covers one modality (chest X-rays), one source, two languages
-                        and six models, run with fixed decoding settings.</p>
-                </details>
-                <details class="bmc-acc reveal-on-scroll">
-                    <summary>Ethics statement</summary>
-                    <p>All images are from a public, de-identified dataset; no patient data left our institution&rsquo;s
-                        cluster, and all models ran locally. Scenarios and patients are synthetic. The benchmark is
-                        intended to expose risks before deployment; our results argue against using the evaluated models
-                        for unsupervised triage, especially in Bangla. Annotators were project team members who
-                        volunteered and could stop at any time.</p>
-                </details>
-                <details class="bmc-acc reveal-on-scroll">
-                    <summary>Acknowledgments</summary>
-                    <p>The computation for this work was performed on the high performance computing infrastructure
-                        operated by Research Support Solutions in the Division of IT at the University of Missouri,
-                        Columbia MO. DOI: <a href="https://doi.org/10.32469/10355/97710" target="_blank"
-                            rel="noopener noreferrer">10.32469/10355/97710</a>.</p>
-                </details>
-            </div>
-        </section>
-
-        <!-- Contributions -->
-        <section class="section" id="contributions">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 section-title">Main Contributions</h2>
-                <article class="box content-block reveal-on-scroll">
-                    <ul class="contrib-list">
-                        <li><span class="contrib-num">1</span><span><strong>Bangla MedConv (BMC)</strong> &mdash; the
-                                first image-grounded multi-turn medical conversation benchmark in Bangla, with an
-                                English twin of every conversation: 160 chest X-ray scenarios with guideline-based
-                                triage tiers and a 1,147-question bilingual VQA probe.</span></li>
-                        <li><span class="contrib-num">2</span><span><strong>Fully open, locally run pipeline</strong>
-                                &mdash; scenario generation, patient simulation, six VLMs and two LLM judges, with no
-                                external API calls.</span></li>
-                        <li><span class="contrib-num">3</span><span><strong>Judge validation without clinicians</strong>
-                                &mdash; blinded human checklist, perturbation tests, translation-based bias test and a
-                                robustness judge.</span></li>
-                        <li><span class="contrib-num">4</span><span><strong>Evidence of the VQA&ndash;safety
-                                    disconnect</strong> &mdash; VQA accuracy is a poor proxy for safety
-                                (&rho;&nbsp;=&nbsp;0.17), advice quality drops in Bangla even when recognition does not,
-                                and some models break down entirely.</span></li>
-                        <li><span class="contrib-num">5</span><span><strong>Degeneration measure and three-way VQA
-                                    scoring</strong> (content, strict, language compliance) separating recognition
-                                failures from language-production failures.</span></li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <!-- Citation -->
+        <!-- Contributions, Limitations & Citation -->
         <section class="section section-alt" id="citation">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 section-title">Citation</h2>
-                <div class="box content-block reveal-on-scroll">
-                    <pre><code>@article{BanglaMedConv2026,
-  title  = {Correct Answers, Unsafe Advice? Evaluating Open-Weight
-            Vision-Language Models in Bangla Image-Grounded
-            Medical Consultations},
-  author = {CIMILab},
-  year   = {2026}
+            <div class="container is-max-widescreen">
+                <div class="columns is-variable is-5">
+                    <div class="column is-6">
+                        <article class="box content-block reveal-on-scroll" style="height:100%;">
+                            <span class="fig-badge" style="background:#e0f2fe;color:#0369a1;"><i
+                                    class="fas fa-check-circle"></i> Paper Contributions</span>
+                            <h2 class="title is-4 mb-3">Key Scientific Contributions</h2>
+                            <ul class="paper-contrib-list">
+                                <li>
+                                    <strong>Bangla MedConv (BMC) Benchmark:</strong> The first image-grounded multi-turn
+                                    medical conversation benchmark in Bangla, with an English twin of every
+                                    conversation: 160 frozen chest X-ray scenarios from NIH ChestX-ray14 with
+                                    guideline-based triage tiers, inpatient/outpatient framing, and a 1,147-question
+                                    bilingual VQA probe.
+                                </li>
+                                <li>
+                                    <strong>Open Reproducible Pipeline:</strong> A fully open, locally run pipeline
+                                    (scenario generation, patient simulation, six evaluated VLMs, two LLM judges) with
+                                    all prompts and code released.
+                                </li>
+                                <li>
+                                    <strong>Clinician-Free Judge Protocol:</strong> A judge-validation protocol
+                                    requiring no clinicians: blinded human checklist, perturbation tests with 5 types of
+                                    inserted safety failures, translation-based language-bias test, and judge-robustness
+                                    analysis.
+                                </li>
+                                <li>
+                                    <strong>Empirical Safety Disconnect:</strong> Proof that single-turn VQA accuracy
+                                    barely predicts multi-turn advice safety (&rho; = 0.17), that advice quality drops
+                                    in Bangla even when visual recognition does not (&Delta; = 0.44), and that models
+                                    can collapse into repetition loops in Bangla.
+                                </li>
+                                <li>
+                                    <strong>Degeneration &amp; Three-Way VQA Scoring:</strong> A formal degeneration
+                                    measure and a three-way VQA scoring scheme (content accuracy, strict accuracy,
+                                    language compliance) separating visual recognition failures from language-production
+                                    failures.
+                                </li>
+                            </ul>
+                        </article>
+                    </div>
+
+                    <div class="column is-6">
+                        <article class="box content-block reveal-on-scroll" style="height:100%;">
+                            <span class="fig-badge" style="background:#fef3c7;color:#b45309;"><i
+                                    class="fas fa-exclamation-triangle"></i> Paper Limitations</span>
+                            <h2 class="title is-4 mb-3">Limitations &amp; Ethics</h2>
+                            <ul class="paper-lim-list">
+                                <li><strong>LLM Judges:</strong> Safety judged by LLMs is not a clinical safety
+                                    certificate; human annotators were trained project team members, not practicing
+                                    physicians.</li>
+                                <li><strong>Text-Mined Labels:</strong> NIH ChestX-ray14 labels were text-mined from
+                                    reports; disease severity is unknown, and urgency tiers for three findings follow a
+                                    team rule.</li>
+                                <li><strong>Care Setting Effect:</strong> Many images come from hospitalized patients;
+                                    comparisons partly reflect care setting (all pneumothorax cases are inpatient),
+                                    though RQ1 and RQ2 evaluate within scenarios.</li>
+                                <li><strong>Simulated Patients:</strong> Patient personas are synthetic and less varied
+                                    than real patients; the simulator occasionally volunteered medical history
+                                    prematurely.</li>
+                                <li><strong>Second Judge Scope:</strong> The second judge (Qwen3.5-122B) also served as
+                                    patient simulator and scored a subset (79 perturbation pairs).</li>
+                                <li><strong>Translation Verification:</strong> Translations for bias testing and
+                                    referral perturbations were model-generated and spot-checked rather than
+                                    exhaustively verified.</li>
+                                <li><strong>Scope:</strong> Evaluates single-modality chest radiographs, two languages
+                                    (Bangla &amp; English), and six open-weight models under fixed decoding parameters.
+                                </li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Citation Box -->
+                <div class="box content-block reveal-on-scroll mt-5">
+                    <div class="is-flex is-justify-content-space-between is-align-items-center mb-3">
+                        <h2 class="title is-4 mb-0"><i class="fas fa-quote-left mr-2"></i>BibTeX Citation</h2>
+                        <a href="./Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf" target="_blank"
+                            class="button is-small is-rounded is-dark">
+                            <span class="icon"><i class="fas fa-download"></i></span><span>Download Paper PDF</span>
+                        </a>
+                    </div>
+                    <pre class="bibtex-code"><code>@article{BanglaMedConv2026,
+  title   = {Correct Answers, Unsafe Advice? Evaluating Open-Weight Vision-Language Models in Bangla Image-Grounded Medical Consultations},
+  author  = {#},
+  journal = {arXiv preprint},
+  year    = {2026},
+  url     = {#}
 }</code></pre>
                 </div>
             </div>

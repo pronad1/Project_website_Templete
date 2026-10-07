@@ -371,3 +371,257 @@ details.bmc-acc p { font-size: .86rem; line-height: 1.65; color: #3a3a5c; margin
     border-color: #fecdd3;
     color: #9f1239;
 }
+
+/* ── Arena Title & Description (Bypasses Bulma Negative Margins) ── */
+.arena-header-text {
+    flex: 1 1 450px;
+}
+.arena-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0.35rem 0 0.4rem 0 !important;
+    line-height: 1.3;
+}
+.arena-desc {
+    font-size: 0.92rem;
+    color: #475569;
+    margin: 0 0 0.75rem 0 !important;
+    line-height: 1.5;
+}
+.title + .subtitle,
+.title:not(.is-spaced) + .subtitle {
+    margin-top: 0.35rem !important;
+}
+
+/* ── Scientific Contributions & Limitations Lists ── */
+.paper-contrib-list,
+.paper-lim-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.paper-contrib-list li,
+.paper-lim-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #334155;
+}
+.paper-contrib-list li:last-child,
+.paper-lim-list li:last-child {
+    margin-bottom: 0;
+}
+.paper-contrib-list li::before {
+    content: '\f058';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    color: #059669;
+    font-size: 0.95rem;
+}
+.paper-lim-list li::before {
+    content: '\f071';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    color: #d97706;
+    font-size: 0.85rem;
+}
+.bibtex-code {
+    background: #0f172a;
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 1.1rem;
+    font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+/* ── Comprehensive Mobile Scalability & Responsiveness ── */
+@media screen and (max-width: 768px) {
+    /* Hero Typography & Layout */
+    .publication-title {
+        font-size: 1.85rem !important;
+        line-height: 1.25 !important;
+    }
+    .publication-subtitle {
+        font-size: 0.92rem !important;
+        line-height: 1.55 !important;
+    }
+    .publication-authors {
+        font-size: 0.95rem !important;
+        line-height: 1.4 !important;
+    }
+    .publication-institution {
+        font-size: 0.8rem !important;
+    }
+    .publication-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+    .publication-links .button {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.75rem;
+    }
+    .publication-tags .tag {
+        font-size: 0.75rem;
+    }
+
+    /* Horizontal Swipeable Quick-Nav Pills */
+    .results-quick-nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 0.4rem 0.5rem !important;
+        margin-bottom: 1.2rem !important;
+    }
+    .results-quick-nav::-webkit-scrollbar {
+        display: none;
+    }
+    .quick-nav-pill {
+        flex-shrink: 0;
+        font-size: 0.76rem !important;
+        padding: 0.35rem 0.75rem !important;
+        white-space: nowrap;
+    }
+
+    /* Model Arena Comparator on Mobile */
+    .arena-card {
+        padding: 1rem !important;
+    }
+    .arena-header {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.75rem !important;
+    }
+    .arena-header-text {
+        width: 100% !important;
+    }
+    .arena-title {
+        font-size: 1.15rem !important;
+    }
+    .arena-desc {
+        font-size: 0.84rem !important;
+    }
+    .arena-lang-selector {
+        width: 100%;
+    }
+    .arena-lang-selector .bmc-tabs {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .arena-lang-selector .bmc-tab-btn {
+        flex: 1;
+        padding: 0.35rem 0.2rem;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    .arena-model-panel {
+        padding: 0.9rem !important;
+    }
+    .arena-metric-meta {
+        font-size: 0.74rem !important;
+    }
+
+    /* Search & Row Filters */
+    .search-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.5rem !important;
+    }
+    .search-row .bmc-tabs {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .search-row .bmc-tabs .bmc-tab-btn {
+        flex: 1;
+        text-align: center;
+    }
+    .search-row input {
+        width: 100% !important;
+    }
+
+    /* Tables Touch-Scroll Container */
+    .bmc-table-wrap {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        margin: 0.75rem 0 !important;
+    }
+    .bmc-table {
+        min-width: 620px !important;
+        font-size: 0.78rem !important;
+    }
+    .bmc-table th,
+    .bmc-table td {
+        padding: 0.4rem 0.5rem !important;
+    }
+
+    /* Chat Interactive Player */
+    .chat-head {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.5rem !important;
+    }
+    .chat-controls {
+        display: flex !important;
+        width: 100% !important;
+        gap: 0.3rem !important;
+    }
+    .chat-ctl {
+        flex: 1 !important;
+        text-align: center !important;
+        padding: 0.4rem 0.2rem !important;
+        font-size: 0.75rem !important;
+    }
+    .chat-body {
+        max-height: 420px !important;
+    }
+    .chat-msg {
+        max-width: 100% !important;
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.7rem !important;
+    }
+
+    /* Stat Ribbon & Metrics */
+    .ribbon {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.5rem !important;
+    }
+    .ribbon-item {
+        padding: 0.7rem 0.8rem !important;
+    }
+    .ribbon-item b {
+        font-size: 1.25rem !important;
+    }
+    .metrics-row .column {
+        padding: 0.4rem !important;
+    }
+    .metric-card {
+        padding: 0.75rem !important;
+    }
+    .metric-value {
+        font-size: 1.45rem !important;
+    }
+
+    /* General Containers */
+    .section {
+        padding: 2rem 1rem !important;
+    }
+    .box {
+        padding: 1rem !important;
+    }
+}

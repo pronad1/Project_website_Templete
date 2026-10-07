@@ -1,139 +1,92 @@
-# DSANet-ISLES
+# Bangla MedConv (BMC)
 
-[![Dataset](https://img.shields.io/badge/Dataset-ISLES%202022-blue)](https://zenodo.org/records/7153326)
-[![Paper](https://img.shields.io/badge/Paper-Under%20Review-red)](#citation)
-[![License](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey)](http://creativecommons.org/licenses/by-sa/4.0/)
+[![Paper](https://img.shields.io/badge/Paper-PDF-red.svg)](./Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf)
+[![Benchmark](https://img.shields.io/badge/Benchmark-1%2C920%20Consultations-blue.svg)](#benchmark-overview)
+[![License](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-sa/4.0/)
+[![Lab](https://img.shields.io/badge/Lab-CIMILab-indigo.svg)](https://github.com/CIMILab)
 
-**DSANet-ISLES: An Interpretable Multi-Architecture Ensemble of DerNet, SegResNet, and Attention U-Net for Low-Resource Stroke Lesion Segmentation**
+> **Correct Answers, Unsafe Advice? Evaluating Open-Weight Vision-Language Models in Bangla Image-Grounded Medical Consultations**  
+> *Computation Informatics and Machine Intelligence Lab (CIMILab), University of Missouri, Columbia, USA*
 
-## Overview
+---
 
-DSANet-ISLES is a paper-aligned framework for 3D ischemic stroke lesion segmentation from multi-modal MRI. The method is designed for robust performance in low-resource clinical settings by combining complementary model families and a lightweight post-processing stack.
+## 📌 Overview
 
-- Project page: pronad1.github.io/DSANet/
-- Dataset: ISLES 2022 (https://zenodo.org/records/7153326)
-- Paper status: Under review
+**Bangla MedConv (BMC)** is the first image-grounded, multi-turn medical consultation safety benchmark for **Bangla** (spoken by >250 million people) paired with an English twin for every conversation.
 
-## Abstract
+Evaluating six open-weight vision-language models (**Gemma 4 31B**, **Llama 4 Scout**, **MedGemma 27B**, **MedGemma 4B**, **Mistral Small 3.2**, **Qwen2.5-VL 7B**) across 160 frozen chest X-ray scenarios (**1,920 conversations**), we uncover critical safety gaps that standard single-turn VQA benchmarks miss entirely:
 
-Accurate automated segmentation of ischemic stroke lesions is critical for timely diagnosis and treatment planning. However, robust deployment is difficult in low-resource settings where compute budgets are limited and MRI quality is heterogeneous.
+1. **VQA Accuracy Barely Predicts Advice Safety ($\rho = 0.17$):** High visual recognition accuracy does not guarantee clinically safe patient recommendations. In English, the correlation drops to $\rho = 0.05$ ($p = 0.097$).
+2. **Language Disparity for Identical Patients ($\Delta = 0.44$):** Identical patient cases receive substantially lower safety scores in Bangla ($3.79 \rightarrow 3.35$, $p < 0.001$).
+3. **Catastrophic Bangla Degeneration Loops:** Qwen2.5-VL 7B collapses into repetitive phrase generation loops in **83.1%** of Bangla conversations (vs. 0.6% in English), causing an 83.3% critical emergency under-triage rate.
+4. **Reliable Clinician-Free Evaluation (84.9% Detection):** A dual-judge protocol successfully detects 84.9% of deliberately inserted clinical safety failures and exhibits negligible language bias ($+0.02$, $p = 0.910$).
 
-DSANet-ISLES addresses this challenge with an interpretable multi-architecture ensemble of DerNet, SegResNet, and Attention U-Net over FLAIR, DWI, and ADC modalities. Outputs are fused via validation-guided weighting and refined using thresholding, test-time augmentation (TTA), and morphological post-processing to improve robustness and suppress false positives.
+---
 
-## Main Contributions
-
-1. Introduces a multi-architecture ensemble tailored for ischemic stroke lesion segmentation in low-resource environments.
-2. Uses validation-guided weighted fusion to exploit complementary strengths of DerNet and Attention U-Net.
-3. Integrates TTA-based prediction aggregation with connected-component filtering for robust final masks.
-4. Reports strong performance on ISLES 2022 with interpretable and reproducible design choices.
-
-## Dataset and Protocol
-
-- Dataset: ISLES 2022
-- Input modalities: FLAIR, DWI, ADC
-- Data split: 70% train / 15% validation / 15% test
-- Task: 3D voxel-wise lesion segmentation
-
-## Experimental Setup
-
-- Optimization: AdamW optimizer with cosine annealing schedule
-- Initial learning rate: $1\times10^{-4}$
-- Losses: DiceFocalLoss / DiceCELoss
-- Training horizon: 100-150 epochs (model-dependent)
-- Effective batch size: 1-4 (with gradient accumulation)
-- Input crop size: $64 \times 64 \times 64$
-
-## Method
-
-### Pipeline Summary
-
-1. Build 3D multi-modal inputs from FLAIR, DWI, and ADC.
-2. Train DerNet, SegResNet, and Attention U-Net independently.
-3. Fuse model probabilities with validation-driven weights.
-4. Apply TTA aggregation.
-5. Binarize and refine masks with connected-component filtering.
-
-### Weighted Ensemble Formulation
-
-$$
-P_{ens} = w_D P_{DerNet} + w_A P_{AttUNet} + w_S P_{SegResNet}
-$$
-
-Final weights used in the reported setup:
-
-$$
-w_D = 0.7000000000000002,\quad w_A = 0.19999999999999982,\quad w_S = 0.1
-$$
-
-
-### TTA and Decision Rule
-
-$$
-\begin{aligned}
-P_{TTA} = \frac{1}{3}\Big(&P_{ens}(x)
-+ Flip_x^{-1}(P_{ens}(Flip_x(x))) \\
-&+ Flip_y^{-1}(P_{ens}(Flip_y(x)))\Big)
-\end{aligned}
-$$
-
-$$
-\hat{Y} = \mathbb{1}[P_{TTA} \geq \tau], \quad \tau = 0.45
-$$
-
-Morphological post-processing removes connected components smaller than 30 voxels.
-
-## Discussion
-
-The reported performance indicates that combining heterogeneous architectures improves stability over single-model inference. In practice, weighted fusion captures complementary lesion evidence, while TTA and connected-component filtering reduce small noisy regions. This design is particularly suitable for constrained environments because it improves output quality without requiring complex deployment-time optimization.
-
-## Why DSANet-ISLES Works
-
-- Complementary experts reduce single-model failure modes.
-- Validation-driven fusion stabilizes lesion probability estimates.
-- TTA and morphology refinement suppress small noisy predictions.
-- The full pipeline is practical for constrained-resource workflows.
-
-## Conclusion
-
-DSANet-ISLES provides an interpretable and reproducible ensemble strategy for ischemic stroke lesion segmentation using multi-modal MRI. The framework combines complementary model priors with lightweight refinement steps, yielding strong Dice and Micro-F1 performance on ISLES 2022 while remaining aligned with low-resource clinical deployment constraints.
-
-## Repository Structure
+## 🗂️ Repository Structure
 
 ```text
-.
-|- index.html
-|- README.md
-|- cimilab.md
-`- static/
-   |- css/
-   |- images/
-   `- js/
+├── index.html                                                    # Interactive project webpage
+├── static/
+│   ├── css/
+│   │   ├── bulma.min.css                                         # Base grid layout
+│   │   ├── index.css                                             # Base styles
+│   │   ├── bmc.css                                               # Academic clinical design system
+│   │   └── bmc-extra.css                                         # Interactive arena & mobile responsiveness
+│   ├── js/
+│   │   ├── index.js                                              # Navigation & counters
+│   │   └── bmc.js                                                # Interactive Arena comparator & chat stepper
+│   └── images/
+│       ├── bmc_logo.jpeg                                         # Project emblem
+│       ├── cimilogo.png                                          # CIMILab emblem
+│       ├── fig_method.png                                        # Figure 1: Benchmark pipeline (300 DPI)
+│       ├── fig_rq1_vqa_vs_safety.png                             # Figure 2: RQ1 VQA vs. Safety
+│       ├── fig_rq2_safety_gap.png                                # Figure 3: RQ2 English-Bangla safety gap
+│       ├── fig_rq2_urgency.png                                   # Figure 4: Triage under-triage confusion
+│       ├── fig_rq3_perturbation.png                              # Figure 5: Deliberate failure detection
+│       └── figS_*.png                                            # Figures S1-S7: Supplementary analyses
+├── Correct_Answers__Unsafe_Advice__Evaluating_Open_Weight.pdf    # Full conference paper PDF
+├── appendix.pdf                                                  # Full appendix document
+└── README.md                                                     # Project documentation
 ```
 
-## Local Preview
+---
+
+## 🚀 Running the Webpage Locally
+
+The project webpage is built using pure semantic HTML5, Vanilla CSS, and JavaScript with zero build steps or heavy dependencies:
 
 ```bash
-python -m http.server 8000
+# Clone the repository
+git clone https://github.com/pronad1/Project_website_Templete.git
+cd Project_website_Templete
+
+# Start a local web server (Python 3)
+python -m http.server 8080
+
+# Open in your browser
+# Navigate to: http://localhost:8080/index.html
 ```
 
-Open http://localhost:8000 in your browser.
+---
 
-## Citation
+## 📑 Citation
+
+If you find this work, benchmark, or code useful, please cite our paper:
 
 ```bibtex
-@article{DSANetISLES2026,
-  author  = {Anonymized Authors},
-  title   = {DSANet-ISLES: An Interpretable Multi-Architecture Ensemble of DerNet, SegResNet, and Attention U-Net for Low-Resource Stroke Lesion Segmentation},
-  journal = {Under Review},
-  year    = {2026}
+@article{BanglaMedConv2026,
+  title   = {Correct Answers, Unsafe Advice? Evaluating Open-Weight Vision-Language Models in Bangla Image-Grounded Medical Consultations},
+  author  = {Pronad Roy and Md. Ashiqur Rahman and CIMILab Team},
+  journal = {arXiv preprint},
+  year    = {2026},
+  url     = {https://github.com/CIMILab}
 }
 ```
 
-## Authors
+---
 
-- ~Anonymized Authors~
+## ⚖️ License & Ethical Notice
 
-
-## License
-
-See [LICENSE](LICENSE) for project licensing terms.
+The benchmark scenarios and synthetic patient profiles are released under the [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).  
+*Disclaimer: Evaluated models are research prototypes and must not be used for unsupervised clinical triage or real-world patient care.*
