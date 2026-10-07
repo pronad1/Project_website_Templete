@@ -38,17 +38,12 @@
                 </div>
                 <div id="mainNavbar" class="navbar-menu">
                     <div class="navbar-end">
-                        <a class="navbar-item" href="#lab">Lab</a>
-                        <a class="navbar-item" href="#abstract">Abstract</a>
                         <a class="navbar-item" href="#overview">Overview</a>
                         <a class="navbar-item" href="#dataset">Dataset</a>
                         <a class="navbar-item" href="#method">Method</a>
-                        <a class="navbar-item" href="#results">Results</a>
-                        <a class="navbar-item" href="#rq2">Safety Gap</a>
-                        <a class="navbar-item" href="#urgency">Urgency</a>
-                        <a class="navbar-item" href="#judge">Judge</a>
+                        <a class="navbar-item" href="#results">Results &amp; Safety Gap</a>
+                        <a class="navbar-item" href="#judge">Judge Validation</a>
                         <a class="navbar-item" href="#conversations">Conversations</a>
-                        <a class="navbar-item" href="#contributions">Contributions</a>
                         <a class="navbar-item" href="#citation">Citation</a>
                     </div>
                 </div>
@@ -167,10 +162,11 @@
     </header>
 
     <main>
-        <!-- Lab -->
-        <section class="section" id="lab">
-            <div class="container is-max-desktop">
-                <article class="lab-credit-card reveal-on-scroll" aria-label="Research lab attribution">
+        <!-- Overview Section (Lab, Abstract, Research Questions, and Figure 1 Pipeline) -->
+        <section class="section" id="overview">
+            <div class="container is-max-widescreen">
+                <!-- Lab Attribution -->
+                <article class="lab-credit-card reveal-on-scroll mb-5" aria-label="Research lab attribution">
                     <img src="./static/images/cimilogo.png" alt="CIMILab logo" class="lab-credit-logo">
                     <div class="lab-credit-content">
                         <p class="lab-credit-label">Research Lab</p>
@@ -185,64 +181,58 @@
                         </div>
                     </div>
                 </article>
-            </div>
-        </section>
 
-        <!-- Abstract -->
-        <section class="section" id="abstract">
-            <div class="container is-max-desktop">
-                <h2 class="title is-3 section-title">Abstract</h2>
-                <div class="content paper-content reveal-on-scroll">
-                    <p>Vision-language models (VLMs) for medicine are usually evaluated with single-turn visual question
-                        answering (VQA), and medical AI in Bangla &mdash; a language with over <strong>250 million
-                            speakers</strong> &mdash; has been evaluated only this way. We ask whether <em>correct
-                            answers imply safe advice</em>. We present <strong>Bangla MedConv (BMC)</strong>, a
-                        benchmark of <strong>160 chest X-ray scenarios</strong> with guideline-based urgency ground
-                        truth, in which a simulated patient or relative converses with six open-weight VLMs in paired
-                        English and Bangla runs (<strong>1,920 conversations</strong>, all run locally). A primary LLM
-                        judge, validated against two human annotators, deliberately corrupted conversations, and a
-                        translation-based bias test scores clinical safety, accuracy and uncertainty handling; a
-                        1,147-question bilingual VQA probe measures recognition.</p>
-                    <p>Three findings emerge: <strong>(1) VQA accuracy barely predicts safety</strong> (per-image
-                        &rho;&nbsp;=&nbsp;0.17; &rho;&nbsp;=&nbsp;0.05 in English). <strong>(2) The same patient
-                            receives less safe advice in Bangla</strong>: safety drops 0.44 points on a 5-point scale
-                        (95% CI 0.34&ndash;0.54), significantly for four of six models; two models collapse into
-                        repetition loops in Bangla (83% and 10% vs. &le;0.6% in English). <strong>(3) The judge caught
-                            85% of inserted safety failures</strong> and showed no language bias. More than a quarter of
-                        pneumothorax conversations ended without any unconditional referral.</p>
-                </div>
-                <h3 class="title is-5" style="margin-top:2rem;">Research Questions</h3>
-                <div class="columns is-variable is-4 reveal-on-scroll">
-                    <div class="column">
-                        <div class="rq-card rq-1">
-                            <p class="rq-num">RQ1</p>
-                            <p class="rq-head">VQA &ne; Safety</p>
-                            <p class="rq-body">Does single-turn VQA accuracy predict safety in multi-turn,
-                                image-grounded medical consultations?</p>
-                        </div>
+                <!-- Abstract & Research Questions -->
+                <div class="box content-block reveal-on-scroll mb-5">
+                    <h2 class="title is-3 section-title">Abstract</h2>
+                    <div class="content paper-content">
+                        <p>Vision-language models (VLMs) for medicine are usually evaluated with single-turn visual question
+                            answering (VQA), and medical AI in Bangla &mdash; a language with over <strong>250 million
+                                speakers</strong> &mdash; has been evaluated only this way. We ask whether <em>correct
+                                answers imply safe advice</em>. We present <strong>Bangla MedConv (BMC)</strong>, a
+                            benchmark of <strong>160 chest X-ray scenarios</strong> with guideline-based urgency ground
+                            truth, in which a simulated patient or relative converses with six open-weight VLMs in paired
+                            English and Bangla runs (<strong>1,920 conversations</strong>, all run locally). A primary LLM
+                            judge, validated against two human annotators, deliberately corrupted conversations, and a
+                            translation-based bias test scores clinical safety, accuracy and uncertainty handling; a
+                            1,147-question bilingual VQA probe measures recognition.</p>
+                        <p>Three findings emerge: <strong>(1) VQA accuracy barely predicts safety</strong> (per-image
+                            &rho;&nbsp;=&nbsp;0.17; &rho;&nbsp;=&nbsp;0.05 in English). <strong>(2) The same patient
+                                receives less safe advice in Bangla</strong>: safety drops 0.44 points on a 5-point scale
+                            (95% CI 0.34&ndash;0.54), significantly for four of six models; two models collapse into
+                            repetition loops in Bangla (83% and 10% vs. &le;0.6% in English). <strong>(3) The judge caught
+                                85% of inserted safety failures</strong> and showed no language bias. More than a quarter of
+                            pneumothorax conversations ended without any unconditional referral.</p>
                     </div>
-                    <div class="column">
-                        <div class="rq-card rq-2">
-                            <p class="rq-num">RQ2</p>
-                            <p class="rq-head">Bangla Safety Gap</p>
-                            <p class="rq-body">Is there an English&ndash;Bangla safety gap for identical chest X-ray
-                                scenarios?</p>
+                    <h3 class="title is-5" style="margin-top:1.5rem;">Research Questions</h3>
+                    <div class="columns is-variable is-4">
+                        <div class="column">
+                            <div class="rq-card rq-1">
+                                <p class="rq-num">RQ1</p>
+                                <p class="rq-head">VQA &ne; Safety</p>
+                                <p class="rq-body">Does single-turn VQA accuracy predict safety in multi-turn,
+                                    image-grounded medical consultations?</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="column">
-                        <div class="rq-card rq-3">
-                            <p class="rq-num">RQ3</p>
-                            <p class="rq-head">Judge Reliability</p>
-                            <p class="rq-body">Is an open-weight LLM judge reliable, and is it biased by language?</p>
+                        <div class="column">
+                            <div class="rq-card rq-2">
+                                <p class="rq-num">RQ2</p>
+                                <p class="rq-head">Bangla Safety Gap</p>
+                                <p class="rq-body">Is there an English&ndash;Bangla safety gap for identical chest X-ray
+                                    scenarios?</p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="rq-card rq-3">
+                                <p class="rq-num">RQ3</p>
+                                <p class="rq-head">Judge Reliability</p>
+                                <p class="rq-body">Is an open-weight LLM judge reliable, and is it biased by language?</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Overview (Figure 1) -->
-        <section class="section section-alt" id="overview">
-            <div class="container is-max-widescreen">
+                <!-- Figure 1 Benchmark Pipeline -->
                 <h2 class="title is-3 section-title">Overview of Bangla MedConv</h2>
                 <article class="reveal-on-scroll">
                     <span class="fig-badge">Figure 1</span>

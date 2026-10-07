@@ -3,26 +3,35 @@
    the DSANet base (index.css + Bulma)
    ======================================================== */
 
-/* ── Colour palette ── */
+/* ── Colour palette (Refined Academic Clinical AI) ── */
 :root {
-    --bmc-purple:      #6c3fc5;
-    --bmc-purple-dark: #4d2b95;
-    --bmc-orange:      #e07230;
-    --bmc-green:       #1a886b;
-    --nav-start:       #2d1a6b;
-    --nav-end:         #5c2d9e;
+    --bmc-purple:      #4f46e5; /* Indigo 600 */
+    --bmc-purple-dark: #3730a3; /* Indigo 800 */
+    --bmc-purple-light:#6366f1; /* Indigo 500 */
+    --bmc-accent:      #7c3aed; /* Violet 600 */
+    --bmc-orange:      #ea580c; /* Coral Amber 600 */
+    --bmc-orange-soft: #f97316; /* Amber 500 */
+    --bmc-green:       #0d9488; /* Teal 600 */
+    --bmc-green-dark:  #115e59; /* Teal 800 */
+    --nav-start:       #0f172a; /* Slate 900 */
+    --nav-end:         #1e1b4b; /* Indigo 950 */
+    --bmc-bg-soft:     #f8fafc; /* Slate 50 */
+    --bmc-border-subtle: rgba(99, 102, 241, 0.12);
 }
 
 /* ── Navbar ── */
 .publication-navbar {
     background: linear-gradient(120deg, var(--nav-start), var(--nav-end));
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.25);
+    backdrop-filter: blur(12px);
 }
 
 /* ── Hero ── */
 .publication-hero {
     background:
-        linear-gradient(130deg, rgba(108,63,197,.08), rgba(224,114,48,.08)),
-        linear-gradient(180deg, #ffffff, #f4f0fc);
+        radial-gradient(ellipse at 85% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(234, 88, 12, 0.08) 0%, transparent 50%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
 }
 
 /* ── Tags ── */
