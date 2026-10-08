@@ -650,3 +650,47 @@ details.bmc-acc p { font-size: .86rem; line-height: 1.65; color: #3a3a5c; margin
         padding: 1rem !important;
     }
 }
+
+/* ── Author / Affiliation block ── */
+.publication-authors {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.7;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .1rem;
+}
+.publication-authors .author-block {
+    white-space: nowrap;
+    color: #cbd5e1;
+}
+.publication-authors sup {
+    font-size: .65em;
+    color: #a78bfa;
+    font-weight: 700;
+    margin-left: .1em;
+}
+.publication-affiliations {
+    font-size: .82rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+.publication-affiliations .affil-block {
+    white-space: nowrap;
+}
+.publication-affiliations sup {
+    font-size: .65em;
+    color: #a78bfa;
+    font-weight: 700;
+    margin-right: .1em;
+}
+
+/* Mobile: stack authors naturally */
+@media (max-width: 600px) {
+    .publication-authors { font-size: .88rem; }
+    .publication-affiliations { font-size: .78rem; }
+}
+
